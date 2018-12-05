@@ -56,6 +56,8 @@ public class MotoristaActivity extends AppCompatActivity {
 
             TextView txt2 = new TextView(this);
             txt2.setText(motorista.getMotNomeCompleto());
+            txt2.setPadding(10,0,0,0);
+
             txt2.setTextSize(20);
 
             TextView txt3 = new TextView(this);
@@ -64,6 +66,7 @@ public class MotoristaActivity extends AppCompatActivity {
 
             TextView txt4 = new TextView(this);
             txt4.setText(motorista.getMotNomeGuerra());
+            txt4.setPadding(10,0,0,0);
             txt4.setTextSize(20);
 
             TextView txt5 = new TextView(this);
@@ -72,6 +75,7 @@ public class MotoristaActivity extends AppCompatActivity {
 
             TextView txt6 = new TextView(this);
             txt6.setText(motorista.getMotCpf().toString());
+            txt6.setPadding(10,0,0,0);
             txt6.setTextSize(20);
 
 
@@ -83,8 +87,6 @@ public class MotoristaActivity extends AppCompatActivity {
             linearLayout.addView(txt4);
             linearLayout.addView(txt5);
             linearLayout.addView(txt6);
-            linearLayout.
-
             linearLayout.setPadding(0,10,0,10);
 
 
@@ -95,6 +97,7 @@ public class MotoristaActivity extends AppCompatActivity {
             card.setOnLongClickListener(new MotoristaOnLongClick());
             card.setTag(motorista.getMotNumSequencial());
             card.setPadding(0,10,0,10);
+            card.setContentPadding(0,10,0,10);
             lista.addView(card);
         }
     }
