@@ -5,7 +5,7 @@ public class Motorista {
     private Integer motNumSequencial;
     private String motNomeCompleto;
     private String motNomeGuerra;
-    private Long motCpf;
+    private String motCpf;
 
     public Motorista(){
 
@@ -35,11 +35,11 @@ public class Motorista {
         this.motNomeGuerra = motNomeGuerra;
     }
 
-    public Long getMotCpf() {
+    public String getMotCpf() {
         return motCpf;
     }
 
-    public void setMotCpf(Long motCpf) {
+    public void setMotCpf(String motCpf) {
         this.motCpf = motCpf;
     }
 }

@@ -33,7 +33,7 @@ public class MotoristaOnClick implements View.OnClickListener {
                         Motorista motorista = new Motorista();
                         motorista.setMotNomeCompleto(nomeMotorista.getText().toString());
                         motorista.setMotNomeGuerra(nomeGuerra.getText().toString());
-                        motorista.setMotCpf(Long.parseLong(cpf.getText().toString()));
+                        motorista.setMotCpf(cpf.getText().toString());
 
                         boolean isInsert = new MotoristaController(context).inserirMotorista(motorista);
 

@@ -20,4 +20,14 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,MotoristaActivity.class);
         startActivity(intent);
     }
+
+    public void onClickNavDadosVeiculo(View view) {
+        Intent intent = new Intent(this,VeiculoActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickNavViagem(View view) {
+        Intent intent = new Intent(this,ViagemActivity.class);
+        startActivity(intent);
+    }
 }

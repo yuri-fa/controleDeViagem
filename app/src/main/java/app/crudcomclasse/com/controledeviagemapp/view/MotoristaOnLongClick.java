@@ -3,12 +3,14 @@ package app.crudcomclasse.com.controledeviagemapp.view;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import app.crudcomclasse.com.controledeviagemapp.R;
+import app.crudcomclasse.com.controledeviagemapp.controller.MotoristaController;
 import app.crudcomclasse.com.controledeviagemapp.model.Motorista;
 
 public class MotoristaOnLongClick implements View.OnLongClickListener {
@@ -31,9 +33,10 @@ public class MotoristaOnLongClick implements View.OnLongClickListener {
                             public void onClick(DialogInterface dialog, int item) {
 
                                 if(item == 0){
-                                    editarMotorista(12);
+                                    editarMotorista(Integer.parseInt(id));
 //                                    Toast.makeText(context,"opcao editar funcionando, valor da tag" + id,Toast.LENGTH_SHORT).show();
                                 }else if(item == 1){
+                                    deletarMotorista(Integer.parseInt(id));
                                     Toast.makeText(context,"opcao deletar funcionando, valor da tag" + id,Toast.LENGTH_SHORT).show();
                                 }
                                 dialog.dismiss();
@@ -42,16 +45,18 @@ public class MotoristaOnLongClick implements View.OnLongClickListener {
         return false;
     }
 
-    public void editarMotorista(int id){
+    public void editarMotorista( final int id){
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.form_motorista,null,false);
 
-        final EditText nomeMotorista = new EditText(view.getContext());
-        nomeMotorista.setText("meus ovos");
-        final EditText nomeDeGuerra = (EditText) view.findViewById(R.id.nomeDeguerra);
-        nomeDeGuerra.setText("fkjkndjkfbjsdbfj");
-        final EditText cpf = (EditText) view.findViewById(R.id.cpf);
+        Motorista motorista = new MotoristaController(context).pegarPorId(id);
 
+        final EditText nomeMotorista = (EditText) view.findViewById(R.id.nomeCompleto);
+        nomeMotorista.setText(motorista.getMotNomeCompleto());
+        final EditText nomeDeGuerra = (EditText) view.findViewById(R.id.nomeDeguerra);
+        nomeDeGuerra.setText(motorista.getMotNomeGuerra());
+        final EditText cpf = (EditText) view.findViewById(R.id.cpf);
+        cpf.setText(motorista.getMotCpf());
         new AlertDialog.Builder(context)
                 .setView(view)
                 .setTitle("Editando")
@@ -61,19 +66,33 @@ public class MotoristaOnLongClick implements View.OnLongClickListener {
                     public void onClick(DialogInterface dialog, int which) {
 
                         Motorista motorista = new Motorista();
-
+                        motorista.setMotNumSequencial(id);
                         motorista.setMotNomeCompleto(nomeMotorista.getText().toString());
                         motorista.setMotNomeGuerra(nomeDeGuerra.getText().toString());
-                        motorista.setMotCpf(Long.parseLong(cpf.getText().toString()));
+                        motorista.setMotCpf(cpf.getText().toString());
 
+                        boolean isUpdate = new MotoristaController(context).update(motorista);
 
-
+                        if(isUpdate){
+                            Toast.makeText(context,"Foi sal pivete",Toast.LENGTH_LONG).show();
+                            ((MotoristaActivity) context).pesquisarTodos();
+                        }else{
+                            Toast.makeText(context,"Foi sal pedo",Toast.LENGTH_LONG).show();
+                        }
 
                         dialog.cancel();
                     }
                 }).show();
+    }
 
+    public void deletarMotorista(int id){
+        boolean isDelete = new MotoristaController(context).deletarMotorista(id);
 
-
+        if(isDelete){
+            Toast.makeText(context,"Foi sal",Toast.LENGTH_LONG).show();
+            ((MotoristaActivity)context).pesquisarTodos();
+        }else{
+            Toast.makeText(context,"Foi pedo",Toast.LENGTH_LONG).show();
+        }
     }
 }

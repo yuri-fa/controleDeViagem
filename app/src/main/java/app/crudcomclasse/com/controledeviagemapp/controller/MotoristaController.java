@@ -9,10 +9,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-import app.crudcomclasse.com.controledeviagemapp.DAO.MotoristaDAO;
+import app.crudcomclasse.com.controledeviagemapp.databaseadapter.DataBaseAdapter;
 import app.crudcomclasse.com.controledeviagemapp.model.Motorista;
 
-public class MotoristaController extends MotoristaDAO {
+public class MotoristaController extends DataBaseAdapter {
 
     public MotoristaController(Context context) {
         super(context);
@@ -25,13 +25,14 @@ public class MotoristaController extends MotoristaDAO {
         values.put("motnomecompleto",motorista.getMotNomeCompleto());
         values.put("motnomeguerra",motorista.getMotNomeGuerra());
         values.put("motcpf",motorista.getMotCpf());
-
-        return db.insert("motorista",null,values) > 0;
+        boolean isInsert = db.insert("motorista",null,values) > 0;
+        db.close();
+        return isInsert;
     }
 
     public List<Motorista> pegarTodos(){
         List<Motorista> motoristas = new ArrayList<>();
-        SQLiteDatabase db = this.getReadableDatabase();
+        SQLiteDatabase db = getReadableDatabase();
         String query = "select * from motorista";
 
         Cursor cursor = db.rawQuery(query,null);
@@ -49,18 +50,53 @@ public class MotoristaController extends MotoristaDAO {
                 motorista.setMotNumSequencial(id);
                 motorista.setMotNomeCompleto(nomeCompleto);
                 motorista.setMotNomeGuerra(nomeDeGuerra);
-                motorista.setMotCpf(Long.parseLong(cpf));
+                motorista.setMotCpf(cpf);
 
                 motoristas.add(motorista);
 
             }while(cursor.moveToNext());
         }
-
+        db.close();
         return motoristas;
 
     }
 
 
+    public Motorista pegarPorId(int id) {
+        SQLiteDatabase db = getReadableDatabase();
+        Motorista motorista = new Motorista();
+        String query = "select * from motorista where motnumsequencial = " + id;
+        Cursor cursor = db.rawQuery(query,null);
 
+        if(cursor.moveToFirst()){
+            motorista.setMotNumSequencial(Integer.parseInt(cursor.getString(cursor.getColumnIndex("motnumsequencial"))));
+            motorista.setMotNomeCompleto(cursor.getString(cursor.getColumnIndex("motnomecompleto")));
+            motorista.setMotNomeGuerra(cursor.getString(cursor.getColumnIndex("motnomeguerra")));
+            motorista.setMotCpf(cursor.getString(cursor.getColumnIndex("motcpf")));
+        }else{
+            return null;
+        }
+        db.close();
+        return motorista;
+    }
 
+    public boolean update(Motorista motorista){
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("motnomecompleto",motorista.getMotNomeCompleto());
+        values.put("motnomeguerra",motorista.getMotNomeGuerra());
+        values.put("motcpf",motorista.getMotCpf());
+        String where = "motnumsequencial = ?";
+        String [] whereArgs = {motorista.getMotNumSequencial().toString()};
+        boolean isUpdate = db.update("motorista",values,where,whereArgs) > 0;
+        db.close();
+        return isUpdate;
+    }
+
+    public boolean deletarMotorista(int id) {
+        SQLiteDatabase db = getWritableDatabase();
+        boolean isDelete = db.delete("motorista","motnumsequencial = "+id,null) > 0;
+        db.close();
+        return isDelete;
+    }
 }

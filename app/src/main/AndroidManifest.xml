@@ -17,6 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.MotoristaActivity" android:hardwareAccelerated="true"/>
+        <activity android:name=".view.VeiculoActivity" />
+        <activity android:name=".view.ViagemActivity" />
     </application>
 
 </manifest>
