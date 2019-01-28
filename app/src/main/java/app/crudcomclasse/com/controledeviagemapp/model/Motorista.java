@@ -42,4 +42,8 @@ public class Motorista {
     public void setMotCpf(String motCpf) {
         this.motCpf = motCpf;
     }
+
+    public boolean equals(Object object){
+        return (object instanceof Motorista) && ((Motorista)object).motNumSequencial == this.motNumSequencial;
+    }
 }

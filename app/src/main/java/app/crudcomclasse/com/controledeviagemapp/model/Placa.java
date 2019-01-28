@@ -6,8 +6,17 @@ public class Placa {
 
     private String serial;
     private BigDecimal peso;
+    private Integer viagem;
 
     public Placa() {
+    }
+
+    public Integer getViagem() {
+        return viagem;
+    }
+
+    public void setViagem(Integer viagem) {
+        this.viagem = viagem;
     }
 
     public BigDecimal getPeso() {

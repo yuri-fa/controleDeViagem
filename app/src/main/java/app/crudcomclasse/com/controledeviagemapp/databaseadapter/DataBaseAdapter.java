@@ -23,7 +23,8 @@ public class DataBaseAdapter extends SQLiteOpenHelper {
         String veiculo = "CREATE TABLE veiculo(" +
                 "veinumsequencial INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "veiplaca TEXT," +
-                "veitipo TEXT)";
+                "veimotorista INTEGER," +
+                "FOREIGN KEY(veimotorista) REFERENCES motorista(motnumsequencial))";
         String viagem = "CREATE TABLE viagem(" +
                 "vinumsequencial INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "vidthrinicio NUMERIC NOT NULL," +
@@ -39,9 +40,9 @@ public class DataBaseAdapter extends SQLiteOpenHelper {
                 "FOREIGN KEY(plaviagem) REFERENCES viagem(vinumsequencial))";
 
         db.execSQL(placa);
-        db.execSQL(viagem);
-        db.execSQL(veiculo);
         db.execSQL(motorista);
+        db.execSQL(veiculo);
+        db.execSQL(viagem);
     }
 
     @Override

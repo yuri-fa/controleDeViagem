@@ -15,7 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import app.crudcomclasse.com.controledeviagemapp.R;
+import app.crudcomclasse.com.controledeviagemapp.controller.MotoristaController;
 import app.crudcomclasse.com.controledeviagemapp.controller.VeiculoController;
+import app.crudcomclasse.com.controledeviagemapp.model.Motorista;
 import app.crudcomclasse.com.controledeviagemapp.model.Veiculo;
 
 public class VeiculoOnLongClick implements View.OnLongClickListener {
@@ -48,20 +50,20 @@ public class VeiculoOnLongClick implements View.OnLongClickListener {
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View view = layoutInflater.inflate(R.layout.form_veiculo,null,false);
         final Veiculo veiculo = new VeiculoController(context).pesquisarPorId(id);
-
+        final List<Motorista> motoristaList = new MotoristaController(context).pegarTodos();
+        final RadioGroup opcoes = (RadioGroup) view.findViewById(R.id.group_motoristas);
+        final List<RadioButton> radioList = new ArrayList<>();
+        for (Motorista motorista : motoristaList){
+            RadioButton radioButton = new RadioButton(context);
+            radioButton.setId(Integer.parseInt(motorista.getMotNumSequencial().toString()));
+            radioButton.setText(motorista.getMotNomeGuerra());
+            radioButton.setTextSize(25);
+            opcoes.addView(radioButton);
+            radioList.add (radioButton);
+        }
         final TextView placa = (TextView) view.findViewById(R.id.placa);
         placa.setText(veiculo.getPlaca());
-        RadioButton button = (RadioButton) view.findViewById(R.id.cavalo);
-        RadioButton button1 = (RadioButton) view.findViewById(R.id.carreta);
-        RadioButton button2 = (RadioButton) view.findViewById(R.id.dolly);
 
-        if (button.getText().toString().equals(veiculo.getTipo())){
-            button.setChecked(true);
-        }else if (button1.getText().toString().equals(veiculo.getTipo())){
-            button1.setChecked(true);
-        }else{
-            button2.setChecked(true);
-        }
         new AlertDialog
                 .Builder(context)
                 .setView(view)
@@ -69,36 +71,27 @@ public class VeiculoOnLongClick implements View.OnLongClickListener {
                 .setPositiveButton("Atualizar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        veiculo.setPlaca(placa.getText().toString());
-                        RadioGroup opcoes = (RadioGroup) view.findViewById(R.id.tipoVeiculo);
-                        RadioButton radioButton;
-                        String tipoVeiculo = null;
-
-                        switch (opcoes.getCheckedRadioButtonId()){
-                            case R.id.cavalo:
-                                radioButton = view.findViewById(R.id.cavalo);
-                                tipoVeiculo = radioButton.getText().toString();
+                        Motorista motorista = null;
+                        Integer id = opcoes.getCheckedRadioButtonId();
+                        Long numSequencial = Long.parseLong(id.toString());
+                        for (Motorista motoristaTemp : motoristaList){
+                            if (motoristaTemp.getMotNumSequencial().equals(numSequencial)){
+                                motorista = motoristaTemp;
                                 break;
-                            case R.id.carreta:
-                                radioButton = view.findViewById(R.id.carreta);
-                                tipoVeiculo = radioButton.getText().toString();
-                                break;
-                            case R.id.dolly:
-                                radioButton = view.findViewById(R.id.dolly);
-                                tipoVeiculo = radioButton.getText().toString();
-                                break;
+                            }
                         }
-                        veiculo.setTipo(tipoVeiculo);
-
+                        veiculo.setPlaca(placa.getText().toString());
+                        if (motorista != null){
+                            veiculo.setMotorista(motorista);
+                        }
                         boolean isUpdate = new VeiculoController(context).atualizarVeiculo(veiculo);
 
                         if (isUpdate){
-                            Toast.makeText(context,"Foi Sal!!!",Toast.LENGTH_LONG).show();
+                            Toast.makeText(context,"Veiculo editado com sucesso",Toast.LENGTH_LONG).show();
                             ((VeiculoActivity)context).pesquisarTodos();
                         }else{
-                            Toast.makeText(context,"Foi Pedo!!!",Toast.LENGTH_LONG).show();
+                            Toast.makeText(context,"Falha tente novamente",Toast.LENGTH_LONG).show();
                         }
-
                         dialog.dismiss();
                     }
                 }).show();
@@ -108,9 +101,9 @@ public class VeiculoOnLongClick implements View.OnLongClickListener {
         boolean isDelete = new VeiculoController(context).deletarVeiculo(id);
         if (isDelete){
             ((VeiculoActivity)context).pesquisarTodos();
-            Toast.makeText(context,"Foi Sal!!!",Toast.LENGTH_LONG).show();
+            Toast.makeText(context,"Veiculo excluido com sucesso",Toast.LENGTH_LONG).show();
         }else{
-            Toast.makeText(context,"Foi Pedo!!!",Toast.LENGTH_LONG).show();
+            Toast.makeText(context,"Falha tente novamente",Toast.LENGTH_LONG).show();
         }
     }
 }

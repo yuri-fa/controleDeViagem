@@ -7,6 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.Date;
 
 import app.crudcomclasse.com.controledeviagemapp.R;
 import app.crudcomclasse.com.controledeviagemapp.model.Placa;
@@ -15,7 +19,7 @@ import app.crudcomclasse.com.controledeviagemapp.model.Viagem;
 
 public class ViagemActivity extends AppCompatActivity {
 
-    private Viagem viagem = new Viagem();
+    private static Viagem viagem = new Viagem();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,16 +30,31 @@ public class ViagemActivity extends AppCompatActivity {
         btnVeiculo.setOnClickListener(new ViagemOnClickVeiculo());
         Button btnPlaca = (Button) this.findViewById(R.id.btn_addproduto);
         btnPlaca.setOnClickListener(new ViagemOnClickPlacas());
+        Button btnFinalizacao = (Button) this.findViewById(R.id.btn_finalizarViagem);
+        btnFinalizacao.setOnClickListener(new ViagemOnClickFinalizar());
+
     }
 
     public void receberVeiculo(Veiculo veiculo){
-        TextView txtVeiculo = (TextView) this.findViewById(R.id.txt_veiculo);
-        this.viagem.setVeiculo(veiculo);
-        txtVeiculo.setText(veiculo.getPlaca());
-        txtVeiculo.setVisibility(View.VISIBLE);
+        if (veiculo.getMotorista() != null){
+            TextView txtVeiculo = (TextView) this.findViewById(R.id.txt_veiculo);
+            this.viagem.setVeiculo(veiculo);
+            txtVeiculo.setText(veiculo.getPlaca());
+            txtVeiculo.setVisibility(View.VISIBLE);
+            TextView txtMotorista = (TextView) this.findViewById(R.id.txt_motorista);
+            this.viagem.setMotorista(veiculo.getMotorista());
+            txtMotorista.setText(veiculo.getMotorista().getMotNomeGuerra());
+            txtMotorista.setVisibility(View.VISIBLE);
+        }else{
+            Toast.makeText(this,"Veiculo nao possui motorista vinculado",Toast.LENGTH_LONG).show();
+        }
     }
 
     public void receberPlaca(Placa placa){
+        if (viagem.getConjuntoDePlacas() == null){
+            viagem.setConjuntoDePlacas(new ArrayList<Placa>());
+        }
+        viagem.getConjuntoDePlacas().add(placa);
         LinearLayout listPlaca = this.findViewById(R.id.list_placas);
         TextView textSerial = new TextView(this);
         textSerial.setText("Serial");
@@ -72,6 +91,10 @@ public class ViagemActivity extends AppCompatActivity {
         card.setCardBackgroundColor(15*33);
 
         listPlaca.addView(card);
+    }
+
+    public static Viagem getViagem(){
+        return viagem;
     }
 
 }

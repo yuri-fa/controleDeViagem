@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import app.crudcomclasse.com.controledeviagemapp.databaseadapter.DataBaseAdapter;
+import app.crudcomclasse.com.controledeviagemapp.model.Motorista;
 import app.crudcomclasse.com.controledeviagemapp.model.Veiculo;
 
 public class VeiculoController extends DataBaseAdapter {
@@ -21,7 +22,9 @@ public class VeiculoController extends DataBaseAdapter {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("veiplaca",veiculo.getPlaca());
-        values.put("veitipo",veiculo.getTipo());
+        if (veiculo.getMotorista() != null){
+            values.put("veimotorista",veiculo.getMotorista().getMotNumSequencial());
+        }
         boolean isInsert = db.insert("veiculo",null,values) > 0;
         db.close();
         return isInsert;
@@ -30,7 +33,7 @@ public class VeiculoController extends DataBaseAdapter {
     public List<Veiculo> pesquisarTodos() {
         List<Veiculo> veiculoList = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
-        String query = "select * from veiculo";
+        String query = "select veinumSequencial,veiplaca,motnumsequencial,motnomeguerra from veiculo LEFT OUTER JOIN motorista on veimotorista = motnumsequencial";
 
         Cursor cursor = db.rawQuery(query,null);
 
@@ -39,11 +42,16 @@ public class VeiculoController extends DataBaseAdapter {
                 Veiculo veiculo = new Veiculo();
                 int id = Integer.parseInt(cursor.getString(cursor.getColumnIndex("veinumsequencial")));
                 String placa = cursor.getString(cursor.getColumnIndex("veiplaca"));
-                String tipo = cursor.getString(cursor.getColumnIndex("veitipo"));
-
+                String nomeMotorista = cursor.getString(cursor.getColumnIndex("motnomeguerra"));
+                Integer motNumSequencial = Integer.parseInt(cursor.getString(cursor.getColumnIndex("motnumsequencial")));
                 veiculo.setVeiNumSequencial(id);
                 veiculo.setPlaca(placa);
-                veiculo.setTipo(tipo);
+                if (nomeMotorista != null && !nomeMotorista.equals("")){
+                    Motorista motorista = new Motorista();
+                    motorista.setMotNumSequencial(motNumSequencial);
+                    motorista.setMotNomeGuerra(nomeMotorista);
+                    veiculo.setMotorista(motorista);
+                }
                 veiculoList.add(veiculo);
             }while(cursor.moveToNext());
         }
@@ -59,7 +67,6 @@ public class VeiculoController extends DataBaseAdapter {
         if  (cursor.moveToFirst()){
             veiculo.setVeiNumSequencial(Integer.parseInt(cursor.getString(cursor.getColumnIndex("veinumsequencial"))));
             veiculo.setPlaca(cursor.getString(cursor.getColumnIndex("veiplaca")));
-            veiculo.setTipo(cursor.getString(cursor.getColumnIndex("veitipo")));
         }
         db.close();
         return veiculo;
@@ -70,7 +77,6 @@ public class VeiculoController extends DataBaseAdapter {
         ContentValues values = new ContentValues();
         values.put("veinumsequencial",veiculo.getVeiNumSequencial());
         values.put("veiplaca",veiculo.getPlaca());
-        values.put("veitipo",veiculo.getTipo());
         String [] whereArgs = {veiculo.getVeiNumSequencial().toString()};
         String where = "veinumsequencial = ?";
 

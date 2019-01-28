@@ -870,10 +870,9 @@ id bottom
 id btnCriarContato
 id btn_addVeiculo
 id btn_addproduto
+id btn_finalizarViagem
 id buttonPanel
 id cancel_action
-id carreta
-id cavalo
 id center
 id center_horizontal
 id center_vertical
@@ -899,7 +898,6 @@ id design_navigation_view
 id dimensions
 id direct
 id disableHome
-id dolly
 id edit_query
 id end
 id end_padder
@@ -915,6 +913,7 @@ id fixed
 id forever
 id ghost_view
 id gone
+id group_motoristas
 id group_veiculos
 id groups
 id home
@@ -1018,7 +1017,6 @@ id text_input_password_toggle
 id textinput_counter
 id textinput_error
 id time
-id tipoVeiculo
 id title
 id titleDividerNoCustom
 id title_template
@@ -1030,6 +1028,7 @@ id transition_layout_save
 id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
+id txt_motorista
 id txt_peso
 id txt_serial
 id txt_veiculo

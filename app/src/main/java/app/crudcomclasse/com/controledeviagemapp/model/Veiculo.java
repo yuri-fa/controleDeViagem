@@ -3,9 +3,15 @@ package app.crudcomclasse.com.controledeviagemapp.model;
 public class Veiculo {
     private Integer veiNumSequencial;
     private String placa;
-    private String tipo;
+    private Motorista motorista;
 
+    public Motorista getMotorista() {
+        return motorista;
+    }
 
+    public void setMotorista(Motorista motorista) {
+        this.motorista = motorista;
+    }
 
     public String getPlaca() {
         return placa;
@@ -21,13 +27,5 @@ public class Veiculo {
 
     public void setVeiNumSequencial(Integer veiNumSequencial) {
         this.veiNumSequencial = veiNumSequencial;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
     }
 }

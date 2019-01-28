@@ -47,15 +47,16 @@ public class VeiculoActivity extends AppCompatActivity {
             txt2.setText(veiculo.getPlaca());
 
             TextView txt3 = new TextView(this);
-            txt3.setPaddingRelative(30,0,0,0);
-            txt3.setTextSize(20);
-            txt3.setText("Tipo Veiculo");
-
             TextView txt4 = new TextView(this);
-            txt4.setPaddingRelative(30,0,0,0);
-            txt4.setTextSize(30);
-            txt4.setText(veiculo.getTipo());
+            if (veiculo.getMotorista() != null){
+                txt3.setPaddingRelative(30,0,0,0);
+                txt3.setTextSize(20);
+                txt3.setText("Motorista vinculado");
 
+                txt4.setPaddingRelative(30,0,0,0);
+                txt4.setTextSize(30);
+                txt4.setText(veiculo.getMotorista().getMotNomeGuerra());
+            }
 
             LinearLayout linearLayout = new LinearLayout(this);
             linearLayout.setOrientation(LinearLayout.VERTICAL);
