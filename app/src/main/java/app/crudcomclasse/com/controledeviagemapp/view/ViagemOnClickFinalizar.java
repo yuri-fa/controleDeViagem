@@ -25,6 +25,7 @@ public class ViagemOnClickFinalizar implements View.OnClickListener {
             boolean isInsert = new ViagemController(v.getContext()).inserirViagem(viagem);
             if (isInsert){
                 Toast.makeText(v.getContext(),"Viagem cadastrada com sucesso",Toast.LENGTH_LONG).show();
+                ((ViagemActivity) v.getContext()).limparDados();
             }else{
                 Toast.makeText(v.getContext(),"Falha tente novamente",Toast.LENGTH_LONG).show();
             }

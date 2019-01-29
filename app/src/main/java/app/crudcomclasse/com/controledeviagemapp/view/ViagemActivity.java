@@ -10,7 +10,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import app.crudcomclasse.com.controledeviagemapp.R;
 import app.crudcomclasse.com.controledeviagemapp.model.Placa;
@@ -91,6 +90,16 @@ public class ViagemActivity extends AppCompatActivity {
         card.setCardBackgroundColor(15*33);
 
         listPlaca.addView(card);
+    }
+
+    public void limparDados(){
+        TextView txtVeiculo = (TextView) this.findViewById(R.id.txt_veiculo);
+        txtVeiculo.setText("");
+        TextView txtMotorista = (TextView) this.findViewById(R.id.txt_motorista);
+        txtMotorista.setText("");
+        LinearLayout listPlaca = this.findViewById(R.id.list_placas);
+        listPlaca.removeAllViews();
+        viagem = new Viagem();
     }
 
     public static Viagem getViagem(){

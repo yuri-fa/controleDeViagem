@@ -30,4 +30,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,ViagemActivity.class);
         startActivity(intent);
     }
+
+    public void OnClickNavRelatorios(View view){
+        Intent intent = new Intent(this,RelatoriosActivity.class);
+        startActivity(intent);
+    }
 }
