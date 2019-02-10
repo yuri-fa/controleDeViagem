@@ -3,12 +3,20 @@ package app.crudcomclasse.com.controledeviagemapp.model;
 import java.math.BigDecimal;
 
 public class Placa {
-
+    private Integer plaNumSequencial;
     private String serial;
     private BigDecimal peso;
     private Integer viagem;
 
     public Placa() {
+    }
+
+    public Integer getPlaNumSequencial() {
+        return plaNumSequencial;
+    }
+
+    public void setPlaNumSequencial(Integer plaNumSequencial) {
+        this.plaNumSequencial = plaNumSequencial;
     }
 
     public Integer getViagem() {
