@@ -31,6 +31,8 @@
             android:hardwareAccelerated="true" />
         <activity android:name="app.crudcomclasse.com.controledeviagemapp.view.VeiculoActivity" />
         <activity android:name="app.crudcomclasse.com.controledeviagemapp.view.ViagemActivity" />
+        <activity android:name="app.crudcomclasse.com.controledeviagemapp.view.RelatoriosActivity" />
+        <activity android:name="app.crudcomclasse.com.controledeviagemapp.view.CardViewActivity" />
 
         <provider
             android:name="com.android.tools.ir.server.InstantRunContentProvider"
