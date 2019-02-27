@@ -1,4 +1,4 @@
-#Sat Feb 09 18:10:43 BRT 2019
+#Wed Feb 27 06:38:05 BRT 2019
 base.0=/home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/build/intermediates/transforms/dexMerger/debug/8
 path.0=classes.dex
 renamed.0=classes.dex

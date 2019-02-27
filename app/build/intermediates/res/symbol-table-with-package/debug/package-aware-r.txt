@@ -426,6 +426,7 @@ color background_floating_material_dark
 color background_floating_material_light
 color background_material_dark
 color background_material_light
+color black
 color bright_foreground_disabled_material_dark
 color bright_foreground_disabled_material_light
 color bright_foreground_inverse_material_dark
@@ -438,6 +439,7 @@ color cardview_dark_background
 color cardview_light_background
 color cardview_shadow_end_color
 color cardview_shadow_start_color
+color cinza
 color colorAccent
 color colorPrimary
 color colorPrimaryDark
@@ -496,6 +498,8 @@ color switch_thumb_material_dark
 color switch_thumb_material_light
 color switch_thumb_normal_material_dark
 color switch_thumb_normal_material_light
+color termacoBackground
+color termacoCabecalho
 color tooltip_background_dark
 color tooltip_background_light
 dimen abc_action_bar_content_inset_material
@@ -744,7 +748,6 @@ drawable abc_textfield_search_material
 drawable abc_vector_test
 drawable avd_hide_password
 drawable avd_show_password
-drawable bg
 drawable caminhao
 drawable design_bottom_navigation_item_background
 drawable design_fab_background
@@ -754,6 +757,7 @@ drawable design_password_eye
 drawable design_snackbar_background
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable ic_local_shipping
 drawable lista
 drawable motorista
 drawable navigation_empty_icon
@@ -817,6 +821,7 @@ id btn_finalizarViagem
 id buttonPanel
 id cancel_action
 id card_view
+id card_view_placas
 id center
 id center_horizontal
 id center_vertical
@@ -826,7 +831,6 @@ id clip_horizontal
 id clip_vertical
 id collapseActionView
 id container
-id content
 id contentPanel
 id coordinator
 id cpf
@@ -847,6 +851,7 @@ id enterAlways
 id enterAlwaysCollapsed
 id exitUntilCollapsed
 id expand_activities_button
+id expandable
 id expanded_menu
 id fill
 id fill_horizontal
@@ -866,17 +871,14 @@ id image
 id info
 id inserirVeiculo
 id italic
-id item_number
 id item_touch_helper_previous_elevation
 id largeLabel
 id left
 id line1
 id line3
-id list
 id listMode
 id list_item
 id list_placas
-id list_relatorios
 id listaMotoristas
 id listaVeiculos
 id masked
@@ -966,7 +968,14 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id txt_motorista
+id txt_motorista_cpf
+id txt_motorista_nomecompleto
+id txt_motorista_nomeguerra
+id txt_motorista_vinculado
 id txt_peso
+id txt_placa
+id txt_relatorio_peso
+id txt_relatorio_serial
 id txt_serial
 id txt_veiculo
 id txt_viagem_codigo
@@ -981,7 +990,6 @@ id uniform
 id up
 id useLogo
 id vertical
-id viagem_placas
 id view_offset_helper
 id visible
 id withText
@@ -1044,8 +1052,6 @@ layout form_motorista
 layout form_veiculo
 layout form_viagem
 layout form_viagem_placas
-layout fragment_item
-layout fragment_item_list
 layout motorista
 layout notification_action
 layout notification_action_tombstone
@@ -1062,6 +1068,8 @@ layout notification_template_media
 layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout relatorio_dados_da_viagem
+layout relatorio_dados_placas
 layout relatorios
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
@@ -1069,8 +1077,7 @@ layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 layout veiculo
 layout viagem
-mipmap ic_launcher
-mipmap ic_launcher_round
+mipmap ic_local_shipping
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description
