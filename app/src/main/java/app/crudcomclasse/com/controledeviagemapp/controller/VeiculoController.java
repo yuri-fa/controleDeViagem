@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-import app.crudcomclasse.com.controledeviagemapp.databaseadapter.DataBaseAdapter;
+import app.crudcomclasse.com.controledeviagemapp.util.DataBaseAdapter;
 import app.crudcomclasse.com.controledeviagemapp.model.Motorista;
 import app.crudcomclasse.com.controledeviagemapp.model.Veiculo;
 
@@ -77,6 +77,9 @@ public class VeiculoController extends DataBaseAdapter {
         ContentValues values = new ContentValues();
         values.put("veinumsequencial",veiculo.getVeiNumSequencial());
         values.put("veiplaca",veiculo.getPlaca());
+        if (veiculo.getMotorista() != null){
+            values.put("veimotorista",veiculo.getMotorista().getMotNumSequencial());
+        }
         String [] whereArgs = {veiculo.getVeiNumSequencial().toString()};
         String where = "veinumsequencial = ?";
 
@@ -85,12 +88,28 @@ public class VeiculoController extends DataBaseAdapter {
         return isUpdate;
     }
 
-    public boolean deletarVeiculo(int id){
+    public boolean deletarVeiculo(int id) {
         SQLiteDatabase db = getWritableDatabase();
         String query = "delete veiculo where veinumsequencial =" + id;
 
-        boolean isDelete = db.delete("veiculo","veinumsequencial =" + id,null) > 0;
+        boolean isDelete = db.delete("veiculo", "veinumsequencial =" + id, null) > 0;
         db.close();
         return isDelete;
+    }
+
+    public Veiculo buscarPorPlaca(String placa){
+        SQLiteDatabase database = this.getReadableDatabase();
+        Veiculo veiculo = new Veiculo();
+        String query = "select veinumsequencial,veiplaca from veiculo where veiplaca = " + placa;
+        Cursor cursor = database.rawQuery(query,null);
+        if (cursor.moveToFirst()){
+            do{
+                veiculo.setVeiNumSequencial(Integer.parseInt(cursor.getString(cursor.getColumnIndex("veinumsequencial"))));
+                veiculo.setPlaca(cursor.getString(cursor.getColumnIndex("veiplaca")));
+            }while (cursor.moveToNext());
+        }else{
+            return null;
+        }
+        return veiculo;
     }
 }

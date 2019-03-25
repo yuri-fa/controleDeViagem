@@ -1,4 +1,4 @@
-package app.crudcomclasse.com.controledeviagemapp.databaseadapter;
+package app.crudcomclasse.com.controledeviagemapp.util;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

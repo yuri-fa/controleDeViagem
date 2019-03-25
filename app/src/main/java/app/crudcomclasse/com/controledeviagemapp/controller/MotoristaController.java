@@ -4,12 +4,11 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import app.crudcomclasse.com.controledeviagemapp.databaseadapter.DataBaseAdapter;
+import app.crudcomclasse.com.controledeviagemapp.util.DataBaseAdapter;
 import app.crudcomclasse.com.controledeviagemapp.model.Motorista;
 
 public class MotoristaController extends DataBaseAdapter {
@@ -85,7 +84,6 @@ public class MotoristaController extends DataBaseAdapter {
         ContentValues values = new ContentValues();
         values.put("motnomecompleto",motorista.getMotNomeCompleto());
         values.put("motnomeguerra",motorista.getMotNomeGuerra());
-        values.put("motcpf",motorista.getMotCpf());
         String where = "motnumsequencial = ?";
         String [] whereArgs = {motorista.getMotNumSequencial().toString()};
         boolean isUpdate = db.update("motorista",values,where,whereArgs) > 0;

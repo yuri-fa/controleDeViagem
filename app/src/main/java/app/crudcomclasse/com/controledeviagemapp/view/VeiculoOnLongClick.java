@@ -51,7 +51,7 @@ public class VeiculoOnLongClick implements View.OnLongClickListener {
         final View view = layoutInflater.inflate(R.layout.form_veiculo,null,false);
         final Veiculo veiculo = new VeiculoController(context).pesquisarPorId(id);
         final List<Motorista> motoristaList = new MotoristaController(context).pegarTodos();
-        final RadioGroup opcoes = (RadioGroup) view.findViewById(R.id.group_motoristas);
+        final RadioGroup opcoes = (RadioGroup) view.findViewById(R.id.form_group_motoristas);
         final List<RadioButton> radioList = new ArrayList<>();
         for (Motorista motorista : motoristaList){
             RadioButton radioButton = new RadioButton(context);
@@ -61,7 +61,7 @@ public class VeiculoOnLongClick implements View.OnLongClickListener {
             opcoes.addView(radioButton);
             radioList.add (radioButton);
         }
-        final TextView placa = (TextView) view.findViewById(R.id.placa);
+        final TextView placa = (TextView) view.findViewById(R.id.form_placa);
         placa.setText(veiculo.getPlaca());
 
         new AlertDialog

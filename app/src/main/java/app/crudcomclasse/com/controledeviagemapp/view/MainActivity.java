@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void OnClickNavRecyclerView(View view){
-        Intent intent = new Intent(this,CardViewActivity.class);
+    public void OnClickNavExportacaoRelatorio(View view){
+        Intent intent = new Intent(this, ExportacaoRelatorio.class);
         startActivity(intent);
     }
 }

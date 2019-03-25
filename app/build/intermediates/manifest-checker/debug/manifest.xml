@@ -21,7 +21,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="app.crudcomclasse.com.controledeviagemapp.view.MainActivity"
-            android:hardwareAccelerated="true" >
+            android:hardwareAccelerated="true"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,11 +31,20 @@
         </activity>
         <activity
             android:name="app.crudcomclasse.com.controledeviagemapp.view.MotoristaActivity"
-            android:hardwareAccelerated="true" />
-        <activity android:name="app.crudcomclasse.com.controledeviagemapp.view.VeiculoActivity" />
-        <activity android:name="app.crudcomclasse.com.controledeviagemapp.view.ViagemActivity" />
-        <activity android:name="app.crudcomclasse.com.controledeviagemapp.view.RelatoriosActivity" />
-        <activity android:name="app.crudcomclasse.com.controledeviagemapp.view.CardViewActivity" />
+            android:hardwareAccelerated="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="app.crudcomclasse.com.controledeviagemapp.view.VeiculoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="app.crudcomclasse.com.controledeviagemapp.view.ViagemActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="app.crudcomclasse.com.controledeviagemapp.view.RelatoriosActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="app.crudcomclasse.com.controledeviagemapp.view.ExportacaoRelatorio"
+            android:screenOrientation="portrait" />
 
         <provider
             android:name="com.android.tools.ir.server.InstantRunContentProvider"

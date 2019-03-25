@@ -2,9 +2,7 @@ package app.crudcomclasse.com.controledeviagemapp.view;
 
 import android.view.View;
 import android.widget.Toast;
-
 import java.util.Date;
-
 import app.crudcomclasse.com.controledeviagemapp.controller.ViagemController;
 import app.crudcomclasse.com.controledeviagemapp.model.Viagem;
 

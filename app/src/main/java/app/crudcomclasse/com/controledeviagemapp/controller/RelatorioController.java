@@ -5,22 +5,15 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
-import android.media.MediaScannerConnection;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
-import android.util.Log;
 import android.widget.Toast;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
-import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -29,14 +22,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import app.crudcomclasse.com.controledeviagemapp.databaseadapter.DataBaseAdapter;
+import app.crudcomclasse.com.controledeviagemapp.util.DataBaseAdapter;
 import app.crudcomclasse.com.controledeviagemapp.model.Motorista;
 import app.crudcomclasse.com.controledeviagemapp.model.Placa;
 import app.crudcomclasse.com.controledeviagemapp.model.Relatorio;
 import app.crudcomclasse.com.controledeviagemapp.model.Veiculo;
 import app.crudcomclasse.com.controledeviagemapp.model.Viagem;
-
-import static android.content.Context.MODE_PRIVATE;
 
 public class RelatorioController extends DataBaseAdapter {
     private Context context;
@@ -93,14 +84,13 @@ public class RelatorioController extends DataBaseAdapter {
         return viagemList;
     }
 
-    public boolean exportTheDB(Date dataInicio,Date dataFinal){
+    public boolean exportarRelatorio(Date dataInicio,Date dataFinal){
         Map<String,Relatorio> listMap = new HashMap<>();
         FileWriter myFile = null;
         PrintWriter myOutWriter = null;
         String cabecalho = "";
-        Calendar cal = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
-        String TimeStampDB = sdf.format(cal.getTime());
+        String TimeStampDB = sdf.format(new Date());
         SQLiteDatabase sampleDB = this.getReadableDatabase();
         int maiorQuantidadeDeViagens = 0;
 
@@ -150,8 +140,9 @@ public class RelatorioController extends DataBaseAdapter {
                                 " left outer join placa as placas" +
                                 " on vinumsequencial = placas.plaviagem" +
                                 " where mot.motnomecompleto = '"+ motorista + "'"+
+                                " and vi.vidthrinicio >= "+ dataInicio.getTime() +
+                                " and vi.vidthrinicio <= "+dataFinal.getTime()+
                                 " group by vi.vinumsequencial,vei.veiplaca";
-
                         Cursor cursorPlaca = sampleDB.rawQuery(queryPlaca, null);
                         if (cursorPlaca != null) {
                             if (cursorPlaca.moveToFirst()) {

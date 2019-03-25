@@ -4,9 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 public class Viagem {
-
-    private String teste1;
-    private String teste2;
     private Integer numSequencial;
     private Motorista motorista;
     private List<Placa> conjuntoDePlacas;
@@ -22,27 +19,6 @@ public class Viagem {
         this.conjuntoDePlacas = viagem.getConjuntoDePlacas();
         this.veiculo = viagem.getVeiculo();
         this.dthrViagem = getDthrViagem();
-    }
-
-    public Viagem(String teste1, String teste2) {
-        this.teste1 = teste1;
-        this.teste2 = teste2;
-    }
-
-    public String getTeste1() {
-        return teste1;
-    }
-
-    public void setTeste1(String teste1) {
-        this.teste1 = teste1;
-    }
-
-    public String getTeste2() {
-        return teste2;
-    }
-
-    public void setTeste2(String teste2) {
-        this.teste2 = teste2;
     }
 
     public Integer getNumSequencial() {

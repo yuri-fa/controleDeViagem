@@ -19,9 +19,8 @@ public class MotoristaOnClick implements View.OnClickListener {
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View view = layoutInflater.inflate(R.layout.form_motorista,null,false);
 
-        final EditText nomeMotorista = (EditText) view.findViewById(R.id.nomeCompleto);
-        final EditText nomeGuerra = (EditText) view.findViewById(R.id.nomeDeguerra);
-        final EditText cpf = (EditText) view.findViewById(R.id.cpf);
+        final EditText nomeMotorista = (EditText) view.findViewById(R.id.form_nome_Completo);
+        final EditText nomeGuerra = (EditText) view.findViewById(R.id.form_nome_guerra);
 
         new AlertDialog
                 .Builder(context)
@@ -33,7 +32,6 @@ public class MotoristaOnClick implements View.OnClickListener {
                         Motorista motorista = new Motorista();
                         motorista.setMotNomeCompleto(nomeMotorista.getText().toString());
                         motorista.setMotNomeGuerra(nomeGuerra.getText().toString());
-                        motorista.setMotCpf(cpf.getText().toString());
 
                         boolean isInsert = new MotoristaController(context).inserirMotorista(motorista);
 

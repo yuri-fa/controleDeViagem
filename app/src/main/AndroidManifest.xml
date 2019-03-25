@@ -10,18 +10,18 @@
         android:roundIcon="@mipmap/ic_local_shipping"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.MainActivity" android:hardwareAccelerated="true">
+        <activity android:name=".view.MainActivity" android:hardwareAccelerated="true" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.MotoristaActivity" android:hardwareAccelerated="true"/>
-        <activity android:name=".view.VeiculoActivity" />
-        <activity android:name=".view.ViagemActivity" />
-        <activity android:name=".view.RelatoriosActivity" />
-        <activity android:name=".view.CardViewActivity" />
+        <activity android:name=".view.MotoristaActivity" android:hardwareAccelerated="true" android:screenOrientation="portrait"/>
+        <activity android:name=".view.VeiculoActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".view.ViagemActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".view.RelatoriosActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".view.ExportacaoRelatorio" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

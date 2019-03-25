@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -29,8 +28,8 @@ public class VeiculoOnClick implements View.OnClickListener {
         final List<Motorista> motoristaList = new MotoristaController(context).pegarTodos();
         final LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View view = layoutInflater.inflate(R.layout.form_veiculo,null,false);
-        final EditText placa = (EditText) view.findViewById(R.id.placa);
-        final RadioGroup opcoes = (RadioGroup) view.findViewById(R.id.group_motoristas);
+        final EditText placa = (EditText) view.findViewById(R.id.form_placa);
+        final RadioGroup opcoes = (RadioGroup) view.findViewById(R.id.form_group_motoristas);
         final List<RadioButton> radioList = new ArrayList<>();
 
         for (Motorista motorista : motoristaList){

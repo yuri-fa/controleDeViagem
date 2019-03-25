@@ -10,7 +10,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import app.crudcomclasse.com.controledeviagemapp.databaseadapter.DataBaseAdapter;
+import app.crudcomclasse.com.controledeviagemapp.util.ControleViagemUtil;
+import app.crudcomclasse.com.controledeviagemapp.util.DataBaseAdapter;
 import app.crudcomclasse.com.controledeviagemapp.model.Motorista;
 import app.crudcomclasse.com.controledeviagemapp.model.Placa;
 import app.crudcomclasse.com.controledeviagemapp.model.Veiculo;
@@ -98,7 +99,7 @@ public class ViagemController extends DataBaseAdapter {
                         placa.setPlaNumSequencial(Integer.parseInt(cursorPlaca.getString(cursorPlaca.getColumnIndex("planumsequencial"))));
                         placa.setSerial(cursorPlaca.getString(cursorPlaca.getColumnIndex("plaserial")));
                         placa.setPeso(new BigDecimal(cursorPlaca.getString(cursorPlaca.getColumnIndex("plapeso"))));
-
+                        placa.setViagem(viagem.getNumSequencial());
                         viagem.getConjuntoDePlacas().add(placa);
                     }while (cursorPlaca.moveToNext());
                 }
@@ -111,4 +112,44 @@ public class ViagemController extends DataBaseAdapter {
         return viagemList;
     }
 
+    public Viagem buscarPorId(Integer idViagem) {
+        SQLiteDatabase database = this.getReadableDatabase();
+        Viagem viagem = new Viagem();
+        Veiculo veiculo = new Veiculo();
+        Motorista motorista = new Motorista();
+        viagem.setConjuntoDePlacas(new ArrayList<Placa>());
+        String query = "select * from viagem " +
+                " left outer join veiculo on viveiculo = veinumsequencial" +
+                " left outer join motorista on vimotorista = motnumsequencial" +
+                " where vinumsequencial = "+ idViagem;
+        Cursor cursor = database.rawQuery(query,null);
+        if (cursor.moveToFirst()){
+            do{
+                viagem.setNumSequencial(Integer.parseInt(cursor.getString(cursor.getColumnIndex("vinumsequencial"))));
+                viagem.setDthrViagem(ControleViagemUtil.formatarStringParaData(cursor.getString(cursor.getColumnIndex("vidthrinicio"))));
+                veiculo.setVeiNumSequencial(Integer.parseInt(cursor.getString(cursor.getColumnIndex("veinumsequencial"))));
+                veiculo.setPlaca(cursor.getString(cursor.getColumnIndex("veiplaca")));
+                motorista.setMotNumSequencial(Integer.parseInt(cursor.getString(cursor.getColumnIndex("motnumsequencial"))));
+                motorista.setMotNomeCompleto(cursor.getString(cursor.getColumnIndex("motnomeguerra")));
+            }while(cursor.moveToNext());
+        }
+        viagem.setMotorista(motorista);
+        viagem.setVeiculo(veiculo);
+        String queryDePlaca = "SELECT * FROM placa where plaviagem = "+viagem.getNumSequencial();
+        Cursor cursorPlaca = database.rawQuery(queryDePlaca, null);
+        if (cursorPlaca.moveToFirst()){
+            do{
+                Placa placa = new Placa();
+                placa.setPlaNumSequencial(Integer.parseInt(cursorPlaca.getString(cursorPlaca.getColumnIndex("planumsequencial"))));
+                placa.setSerial(cursorPlaca.getString(cursorPlaca.getColumnIndex("plaserial")));
+                placa.setPeso(new BigDecimal(cursorPlaca.getString(cursorPlaca.getColumnIndex("plapeso"))));
+                viagem.getConjuntoDePlacas().add(placa);
+            }while (cursorPlaca.moveToNext());
+        }
+        return viagem;
+    }
+
+    public boolean excluirViagem(Integer numSequencial) {
+        return true;
+    }
 }
