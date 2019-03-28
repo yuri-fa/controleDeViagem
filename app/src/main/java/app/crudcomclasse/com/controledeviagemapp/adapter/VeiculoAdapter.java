@@ -38,13 +38,11 @@ public class VeiculoAdapter extends RecyclerView.Adapter<VeiculoAdapter.ViewHold
     public static class ViewHolder extends RecyclerView.ViewHolder{
         private View layout;
         private TextView placaVeiculo;
-        private TextView motoristaVinculado;
 
         public ViewHolder(View itemView) {
             super(itemView);
             layout = itemView;
             placaVeiculo = (TextView) layout.findViewById(R.id.placa_veiculo);
-            motoristaVinculado = (TextView) layout.findViewById(R.id.motorista_vinculado);
         }
     }
 
@@ -70,7 +68,6 @@ public class VeiculoAdapter extends RecyclerView.Adapter<VeiculoAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final Veiculo veiculo = veiculoList.get(position);
         holder.placaVeiculo.setText(veiculo.getPlaca());
-        holder.motoristaVinculado.setText(veiculo.getMotorista().getMotNomeGuerra());
 
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,17 +79,6 @@ public class VeiculoAdapter extends RecyclerView.Adapter<VeiculoAdapter.ViewHold
                     public void onClick(DialogInterface dialog, int which) {
                         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                         final View view = layoutInflater.inflate(R.layout.form_veiculo,null,false);
-                        final List<Motorista> motoristaList = new MotoristaController(context).pegarTodos();
-                        final RadioGroup opcoes = (RadioGroup) view.findViewById(R.id.form_group_motoristas);
-                        final List<RadioButton> radioList = new ArrayList<>();
-                        for (Motorista motorista : motoristaList){
-                            RadioButton radioButton = new RadioButton(context);
-                            radioButton.setId(Integer.parseInt(motorista.getMotNumSequencial().toString()));
-                            radioButton.setText(motorista.getMotNomeGuerra());
-                            radioButton.setTextSize(25);
-                            opcoes.addView(radioButton);
-                            radioList.add (radioButton);
-                        }
                         final TextView placa = (TextView) view.findViewById(R.id.form_placa);
                         placa.setText(veiculo.getPlaca());
 
@@ -104,19 +90,8 @@ public class VeiculoAdapter extends RecyclerView.Adapter<VeiculoAdapter.ViewHold
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         Veiculo veiculoUpdate = new Veiculo();
-                                        Motorista motorista = null;
                                         veiculoUpdate.setVeiNumSequencial(veiculo.getVeiNumSequencial());
-                                        Integer id = opcoes.getCheckedRadioButtonId();
-                                        for (Motorista motoristaTemp : motoristaList){
-                                            if (motoristaTemp.getMotNumSequencial().equals(id)){
-                                                motorista = motoristaTemp;
-                                                break;
-                                            }
-                                        }
                                         veiculoUpdate.setPlaca(placa.getText().toString());
-                                        if (motorista != null){
-                                            veiculoUpdate.setMotorista(motorista);
-                                        }
                                         boolean isUpdate = new VeiculoController(context).atualizarVeiculo(veiculoUpdate);
 
                                         if (isUpdate){

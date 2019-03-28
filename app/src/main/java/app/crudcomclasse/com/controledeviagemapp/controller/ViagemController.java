@@ -27,7 +27,6 @@ public class ViagemController extends DataBaseAdapter {
         boolean valido = true;
         ContentValues contentValues = new ContentValues();
         contentValues.put("viveiculo",viagem.getVeiculo().getVeiNumSequencial());
-        contentValues.put("vimotorista",viagem.getVeiculo().getMotorista().getMotNumSequencial());
         contentValues.put("vidthrinicio",viagem.getDthrViagem().getTime());
 
         Long idViagem = db.insert("viagem",null,contentValues);
@@ -151,5 +150,39 @@ public class ViagemController extends DataBaseAdapter {
 
     public boolean excluirViagem(Integer numSequencial) {
         return true;
+    }
+
+    public ArrayList<Motorista> buscarMotoristas(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<Motorista> motoristaList = new ArrayList<>();
+        String query = "select * from motorista";
+        Cursor cursor = db.rawQuery(query,null);
+        if (cursor.moveToFirst()){
+            do{
+                Motorista motorista = new Motorista();
+                motorista.setMotNumSequencial(Integer.parseInt(cursor.getString(cursor.getColumnIndex("motnumsequencial"))));
+                motorista.setMotNomeCompleto(cursor.getString(cursor.getColumnIndex("motnomecompleto")));
+                motorista.setMotNomeGuerra(cursor.getString(cursor.getColumnIndex("motnomeguerra")));
+                motorista.setMotCpf(cursor.getString(cursor.getColumnIndex("motcpf")));
+                motoristaList.add( motorista);
+            }while(cursor.moveToNext());
+        }
+        return motoristaList;
+    }
+
+    public ArrayList<Veiculo> buscarVeiculos(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<Veiculo> veiculoList = new ArrayList<>();
+        String query = "select * from veiculo";
+        Cursor cursor = db.rawQuery(query,null);
+        if (cursor.moveToFirst()){
+            do{
+                Veiculo veiculo = new Veiculo();
+                veiculo.setVeiNumSequencial(Integer.parseInt(cursor.getString(cursor.getColumnIndex("veinumsequencial"))));
+                veiculo.setPlaca(cursor.getString(cursor.getColumnIndex("veiplaca")));
+                veiculoList.add(veiculo);
+            }while(cursor.moveToNext());
+        }
+        return veiculoList;
     }
 }

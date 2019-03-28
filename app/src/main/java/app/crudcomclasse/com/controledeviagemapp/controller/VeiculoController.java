@@ -22,9 +22,6 @@ public class VeiculoController extends DataBaseAdapter {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("veiplaca",veiculo.getPlaca());
-        if (veiculo.getMotorista() != null){
-            values.put("veimotorista",veiculo.getMotorista().getMotNumSequencial());
-        }
         boolean isInsert = db.insert("veiculo",null,values) > 0;
         db.close();
         return isInsert;
@@ -43,15 +40,8 @@ public class VeiculoController extends DataBaseAdapter {
                 int id = Integer.parseInt(cursor.getString(cursor.getColumnIndex("veinumsequencial")));
                 String placa = cursor.getString(cursor.getColumnIndex("veiplaca"));
                 String nomeMotorista = cursor.getString(cursor.getColumnIndex("motnomeguerra"));
-                Integer motNumSequencial = Integer.parseInt(cursor.getString(cursor.getColumnIndex("motnumsequencial")));
                 veiculo.setVeiNumSequencial(id);
                 veiculo.setPlaca(placa);
-                if (nomeMotorista != null && !nomeMotorista.equals("")){
-                    Motorista motorista = new Motorista();
-                    motorista.setMotNumSequencial(motNumSequencial);
-                    motorista.setMotNomeGuerra(nomeMotorista);
-                    veiculo.setMotorista(motorista);
-                }
                 veiculoList.add(veiculo);
             }while(cursor.moveToNext());
         }
@@ -77,9 +67,6 @@ public class VeiculoController extends DataBaseAdapter {
         ContentValues values = new ContentValues();
         values.put("veinumsequencial",veiculo.getVeiNumSequencial());
         values.put("veiplaca",veiculo.getPlaca());
-        if (veiculo.getMotorista() != null){
-            values.put("veimotorista",veiculo.getMotorista().getMotNumSequencial());
-        }
         String [] whereArgs = {veiculo.getVeiNumSequencial().toString()};
         String where = "veinumsequencial = ?";
 

@@ -115,14 +115,14 @@ public final class R {
         public static final int chronometer = 0x7f080031;
         public static final int end = 0x7f080047;
         public static final int forever = 0x7f080053;
-        public static final int horizontal = 0x7f08005c;
-        public static final int icon = 0x7f08005d;
-        public static final int icon_group = 0x7f08005e;
-        public static final int info = 0x7f080061;
-        public static final int italic = 0x7f080062;
-        public static final int left = 0x7f080065;
-        public static final int line1 = 0x7f080066;
-        public static final int line3 = 0x7f080067;
+        public static final int horizontal = 0x7f08005b;
+        public static final int icon = 0x7f08005c;
+        public static final int icon_group = 0x7f08005d;
+        public static final int info = 0x7f080060;
+        public static final int italic = 0x7f080061;
+        public static final int left = 0x7f080064;
+        public static final int line1 = 0x7f080065;
+        public static final int line3 = 0x7f080066;
         public static final int none = 0x7f080076;
         public static final int normal = 0x7f080077;
         public static final int notification_background = 0x7f080078;
@@ -138,7 +138,7 @@ public final class R {
         public static final int time = 0x7f0800b9;
         public static final int title = 0x7f0800ba;
         public static final int top = 0x7f0800bd;
-        public static final int vertical = 0x7f0800da;
+        public static final int vertical = 0x7f0800d8;
     }
     public static final class integer {
         private integer() {}

@@ -35,7 +35,6 @@ public class VeiculoActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         ImageButton imageButton = (ImageButton) findViewById(R.id.novoVeiculo);
-        imageButton.setOnClickListener(new VeiculoOnClick());
         pesquisarTodos();
     }
 

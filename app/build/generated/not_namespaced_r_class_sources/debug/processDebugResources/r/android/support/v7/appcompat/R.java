@@ -647,18 +647,18 @@ public final class R {
         public static final int expand_activities_button = 0x7f08004d;
         public static final int expanded_menu = 0x7f08004e;
         public static final int forever = 0x7f080053;
-        public static final int home = 0x7f08005a;
-        public static final int icon = 0x7f08005d;
-        public static final int icon_group = 0x7f08005e;
-        public static final int image = 0x7f080060;
-        public static final int info = 0x7f080061;
-        public static final int italic = 0x7f080062;
-        public static final int left = 0x7f080065;
-        public static final int line1 = 0x7f080066;
-        public static final int line3 = 0x7f080067;
-        public static final int listMode = 0x7f080068;
-        public static final int list_item = 0x7f080069;
-        public static final int message = 0x7f08006d;
+        public static final int home = 0x7f080059;
+        public static final int icon = 0x7f08005c;
+        public static final int icon_group = 0x7f08005d;
+        public static final int image = 0x7f08005f;
+        public static final int info = 0x7f080060;
+        public static final int italic = 0x7f080061;
+        public static final int left = 0x7f080064;
+        public static final int line1 = 0x7f080065;
+        public static final int line3 = 0x7f080066;
+        public static final int listMode = 0x7f080067;
+        public static final int list_item = 0x7f080068;
+        public static final int message = 0x7f08006c;
         public static final int multiply = 0x7f080071;
         public static final int none = 0x7f080076;
         public static final int normal = 0x7f080077;
@@ -708,9 +708,9 @@ public final class R {
         public static final int title_template = 0x7f0800bc;
         public static final int top = 0x7f0800bd;
         public static final int topPanel = 0x7f0800be;
-        public static final int uniform = 0x7f0800d7;
-        public static final int up = 0x7f0800d8;
-        public static final int wrap_content = 0x7f0800e2;
+        public static final int uniform = 0x7f0800d4;
+        public static final int up = 0x7f0800d5;
+        public static final int wrap_content = 0x7f0800e0;
     }
     public static final class integer {
         private integer() {}

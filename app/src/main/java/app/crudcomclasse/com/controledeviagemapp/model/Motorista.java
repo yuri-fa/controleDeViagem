@@ -46,4 +46,9 @@ public class Motorista {
     public boolean equals(Object object){
         return (object instanceof Motorista) && ((Motorista)object).motNumSequencial == this.motNumSequencial;
     }
+
+    @Override
+    public String toString() {
+        return motNomeGuerra;
+    }
 }

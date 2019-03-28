@@ -22,9 +22,7 @@ public class DataBaseAdapter extends SQLiteOpenHelper {
                 +"motcpf TEXT)";
         String veiculo = "CREATE TABLE veiculo(" +
                 "veinumsequencial INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "veiplaca TEXT," +
-                "veimotorista INTEGER," +
-                "FOREIGN KEY(veimotorista) REFERENCES motorista(motnumsequencial))";
+                "veiplaca TEXT)";
         String viagem = "CREATE TABLE viagem(" +
                 "vinumsequencial INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "vidthrinicio NUMERIC NOT NULL," +

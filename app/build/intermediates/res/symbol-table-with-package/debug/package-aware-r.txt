@@ -863,7 +863,6 @@ id fill_horizontal
 id fill_vertical
 id fixed
 id forever
-id form_group_motoristas
 id form_nome_Completo
 id form_nome_guerra
 id form_placa
@@ -891,6 +890,7 @@ id media_actions
 id message
 id middle
 id mini
+id mot_spinner
 id motorista_vinculado
 id multiply
 id navigation_header_container
@@ -976,16 +976,13 @@ id transition_layout_save
 id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
-id txt_motorista
 id txt_motorista_nomecompleto
 id txt_motorista_nomeguerra
-id txt_motorista_vinculado
 id txt_peso
 id txt_placa
 id txt_relatorio_peso
 id txt_relatorio_serial
 id txt_serial
-id txt_veiculo
 id txt_viagem_codigo
 id txt_viagem_codigo_valor
 id txt_viagem_data
@@ -997,6 +994,7 @@ id txt_viagem_veiculo_placa
 id uniform
 id up
 id useLogo
+id vei_spinner
 id vertical
 id viagem_codigo
 id viagem_data

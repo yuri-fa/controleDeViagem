@@ -1,17 +1,9 @@
 package app.crudcomclasse.com.controledeviagemapp.model;
 
 public class Veiculo {
+
     private Integer veiNumSequencial;
     private String placa;
-    private Motorista motorista;
-
-    public Motorista getMotorista() {
-        return motorista;
-    }
-
-    public void setMotorista(Motorista motorista) {
-        this.motorista = motorista;
-    }
 
     public String getPlaca() {
         return placa;
@@ -27,5 +19,10 @@ public class Veiculo {
 
     public void setVeiNumSequencial(Integer veiNumSequencial) {
         this.veiNumSequencial = veiNumSequencial;
+    }
+
+    @Override
+    public String toString(){
+        return placa;
     }
 }
