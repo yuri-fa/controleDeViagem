@@ -1,6 +1,7 @@
 package app.crudcomclasse.com.controledeviagemapp.view;
 
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -35,6 +36,7 @@ public class VeiculoActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         ImageButton imageButton = (ImageButton) findViewById(R.id.novoVeiculo);
+        imageButton.setOnClickListener(new VeiculoOnClick());
         pesquisarTodos();
     }
 

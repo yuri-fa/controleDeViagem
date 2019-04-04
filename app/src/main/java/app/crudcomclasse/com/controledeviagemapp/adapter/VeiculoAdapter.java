@@ -104,7 +104,7 @@ public class VeiculoAdapter extends RecyclerView.Adapter<VeiculoAdapter.ViewHold
                                     }
                                 }).show();
                     }
-                });
+               });
                builder.setNegativeButton("Deletar", new DialogInterface.OnClickListener(){
                    @Override
                    public void onClick(DialogInterface dialog, int which) {
