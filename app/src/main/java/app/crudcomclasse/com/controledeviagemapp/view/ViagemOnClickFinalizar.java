@@ -4,6 +4,8 @@ import android.view.View;
 import android.widget.Toast;
 import java.util.Date;
 import app.crudcomclasse.com.controledeviagemapp.controller.ViagemController;
+import app.crudcomclasse.com.controledeviagemapp.model.Motorista;
+import app.crudcomclasse.com.controledeviagemapp.model.Veiculo;
 import app.crudcomclasse.com.controledeviagemapp.model.Viagem;
 
 public class ViagemOnClickFinalizar implements View.OnClickListener {
@@ -11,6 +13,10 @@ public class ViagemOnClickFinalizar implements View.OnClickListener {
     public void onClick(View v) {
         boolean valido = true;
         Viagem viagem = ViagemActivity.getViagem();
+        if (viagem.getMotorista() == null){
+            valido = false;
+            Toast.makeText(v.getContext(),"Informe o Motorista",Toast.LENGTH_LONG).show();
+        }
         if (viagem.getVeiculo() == null){
             valido = false;
             Toast.makeText(v.getContext(),"Informe o veiculo",Toast.LENGTH_LONG).show();

@@ -1,9 +1,7 @@
 package app.crudcomclasse.com.controledeviagemapp.view;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -70,7 +68,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     @NonNull
     @Override
     public ViagemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_row,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.dados_viagem_row,parent,false);
         ViagemHolder viagemHolder = new ViagemHolder(view);
         return viagemHolder;
     }

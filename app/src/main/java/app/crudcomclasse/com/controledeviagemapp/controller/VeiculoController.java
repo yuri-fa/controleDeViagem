@@ -77,7 +77,7 @@ public class VeiculoController extends DataBaseAdapter {
 
     public boolean deletarVeiculo(int id) {
         SQLiteDatabase db = getWritableDatabase();
-        String query = "delete veiculo where veinumsequencial =" + id;
+//        String query = "delete veiculo where veinumsequencial =" + id;
 
         boolean isDelete = db.delete("veiculo", "veinumsequencial =" + id, null) > 0;
         db.close();

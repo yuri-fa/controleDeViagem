@@ -32,7 +32,8 @@ public class ViagemOnClickPlacas implements View.OnClickListener {
                         placa.setSerial(txtSerial.getText().toString());
                         BigDecimal peso = new BigDecimal(txtPeso.getText().toString());
                         placa.setPeso(peso);
-                        ((ViagemActivity)context).receberPlaca(placa);
+                        ((ViagemActivity)context).receberPlaca(placa,true);
+                        dialog.dismiss();
                     }
                 }).show();
     }

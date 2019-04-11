@@ -28,6 +28,7 @@ public class ViagemController extends DataBaseAdapter {
         ContentValues contentValues = new ContentValues();
         contentValues.put("viveiculo",viagem.getVeiculo().getVeiNumSequencial());
         contentValues.put("vidthrinicio",viagem.getDthrViagem().getTime());
+        contentValues.put("vimotorista",viagem.getMotorista().getMotNumSequencial());
 
         Long idViagem = db.insert("viagem",null,contentValues);
         if (idViagem != null){
@@ -129,7 +130,8 @@ public class ViagemController extends DataBaseAdapter {
                 veiculo.setVeiNumSequencial(Integer.parseInt(cursor.getString(cursor.getColumnIndex("veinumsequencial"))));
                 veiculo.setPlaca(cursor.getString(cursor.getColumnIndex("veiplaca")));
                 motorista.setMotNumSequencial(Integer.parseInt(cursor.getString(cursor.getColumnIndex("motnumsequencial"))));
-                motorista.setMotNomeCompleto(cursor.getString(cursor.getColumnIndex("motnomeguerra")));
+                motorista.setMotNomeCompleto(cursor.getString(cursor.getColumnIndex("motnomecompleto")));
+                motorista.setMotNomeGuerra(cursor.getString(cursor.getColumnIndex("motnomeguerra")));
             }while(cursor.moveToNext());
         }
         viagem.setMotorista(motorista);
@@ -184,5 +186,11 @@ public class ViagemController extends DataBaseAdapter {
             }while(cursor.moveToNext());
         }
         return veiculoList;
+    }
+
+    public boolean excluirPlaca(Integer plaNumSequencial) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        boolean excluido = db.delete("placa","planumsequencial = "+ plaNumSequencial,null) > 0;
+        return excluido;
     }
 }

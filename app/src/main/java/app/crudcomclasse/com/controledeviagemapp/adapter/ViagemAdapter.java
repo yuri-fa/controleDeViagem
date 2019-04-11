@@ -2,7 +2,6 @@ package app.crudcomclasse.com.controledeviagemapp.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,7 +60,7 @@ public class ViagemAdapter extends RecyclerView.Adapter<ViagemAdapter.ViewHolder
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View layout = layoutInflater.inflate(R.layout.card_view_row,parent,false);
+        View layout = layoutInflater.inflate(R.layout.dados_viagem_row,parent,false);
         ViewHolder viewHolder = new ViewHolder(layout);
         return viewHolder;
     }

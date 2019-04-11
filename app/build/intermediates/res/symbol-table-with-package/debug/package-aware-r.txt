@@ -816,8 +816,6 @@ id auto
 id beginning
 id blocking
 id bottom
-id btn_addVeiculo
-id btn_addproduto
 id btn_finalizarViagem
 id buttonPanel
 id calendario
@@ -884,7 +882,6 @@ id line1
 id line3
 id listMode
 id list_item
-id list_placas
 id masked
 id media_actions
 id message
@@ -902,17 +899,21 @@ id notification_background
 id notification_main_column
 id notification_main_column_container
 id novoMotorista
+id novoProduto
 id novoVeiculo
 id parallax
 id parentPanel
 id parent_matrix
 id pin
+id placa_peso
+id placa_serial
 id placa_veiculo
 id progress_circular
 id progress_horizontal
 id radio
 id reciclerViewMotorista
 id reciclerViewVeiculo
+id reciclerViewViagemPlacas
 id recyclerViewViagens
 id right
 id right_icon
@@ -1041,8 +1042,8 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_main
-layout card_view_row
 layout dados_basicos_viagem
+layout dados_viagem_row
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar
@@ -1078,6 +1079,7 @@ layout notification_template_media
 layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout placa_row
 layout relatorio_dados_da_viagem
 layout relatorio_dados_placas
 layout relatorios

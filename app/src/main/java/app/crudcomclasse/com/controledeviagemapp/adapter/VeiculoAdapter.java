@@ -73,8 +73,8 @@ public class VeiculoAdapter extends RecyclerView.Adapter<VeiculoAdapter.ViewHold
             @Override
             public void onClick(View v) {
                final AlertDialog.Builder builder = new AlertDialog.Builder(context);
-               builder.setTitle("Atualizar ou Deletar");
-               builder.setPositiveButton("Atualizar", new DialogInterface.OnClickListener(){
+               builder.setTitle("Opcoes");
+               builder.setPositiveButton("Editar", new DialogInterface.OnClickListener(){
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
