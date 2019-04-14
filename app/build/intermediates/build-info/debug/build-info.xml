@@ -5,33 +5,31 @@
     build-mode="COLD"
     density="xhdpi"
     format="10"
-    ir-eligibility="COMPATIBLE"
     plugin-version="3.2.1"
-    timestamp="1554938507023"
+    timestamp="1555255899783"
     token="3405133554166932424"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="169" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="7" />
+        duration="0" />
     <task
         name="verifier"
-        duration="6" />
-
-    <artifact
-        location="/home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
-        type="SPLIT" />
+        duration="0" />
 
     <build
         build-mode="FULL"
-        timestamp="1554937957521"
+        timestamp="1555253201261"
         verifier="FULL_BUILD_REQUESTED" >
+        <artifact
+            location="/home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
+            type="SPLIT" />
         <artifact
             location="/home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
             type="SPLIT" />
@@ -60,9 +58,6 @@
             location="/home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
             type="SPLIT" />
         <artifact
-            location="/home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
-            type="SPLIT" />
-        <artifact
             location="/home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
             type="SPLIT" />
         <artifact
@@ -72,11 +67,33 @@
     <build
         build-mode="COLD"
         ir-eligibility="COMPATIBLE"
-        timestamp="1554938507023"
+        timestamp="1555253874583"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="/home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="COMPATIBLE"
+        timestamp="1555254337331"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="/home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
+            type="SPLIT" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="CLASS_ADDED"
+        timestamp="1555255875625"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="/home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
             type="SPLIT" />
     </build>
+    <build
+        build-mode="COLD"
+        timestamp="1555255899783"
+        verifier="COLD_SWAP_REQUESTED" />
 
 </instant-run>
