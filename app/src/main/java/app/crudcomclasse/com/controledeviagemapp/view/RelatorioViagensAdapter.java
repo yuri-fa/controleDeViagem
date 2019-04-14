@@ -69,17 +69,21 @@ public class RelatorioViagensAdapter extends RecyclerView.Adapter<RelatorioViage
     @Override
     public void onBindViewHolder(@NonNull RelatorioViagensAdapter.ViewHolder holder, int position) {
         final Viagem viagem = viagemList.get(position);
+        final List<Placa> placaList = viagem.getConjuntoDePlacas();
         holder.codigo.setText("Codigo : "+ viagem.getNumSequencial());
         holder.data.setText("Data : "+ ControleViagemUtil.formatarDataParaString(viagem.getDthrViagem()));
         holder.veiculo.setText("Veiculo : " + viagem.getVeiculo().getPlaca());
         holder.motorista.setText("Motorista : " + viagem.getMotorista().getMotNomeCompleto());
+        holder.conjuntoPlacas.removeAllViews();
 
-        for (Placa placa : viagem.getConjuntoDePlacas()){
+        for (Placa placa : placaList){
             TextView textSerial = new TextView(context);
+            textSerial.setPadding(10,0,0,0);
             textSerial.setText("Serial : " + placa.getSerial());
             textSerial.setTextSize(20);
 
             TextView textPeso = new TextView(context);
+            textPeso.setPadding(10,0,0,0);
             textPeso.setText("Peso : "+ placa.getPeso().toString());
             textPeso.setTextSize(20);
 
@@ -89,9 +93,10 @@ public class RelatorioViagensAdapter extends RecyclerView.Adapter<RelatorioViage
             linearLayout.addView(textPeso);
 
             CardView card = new CardView(context);
+//            card.setContentPadding(5,5,5,5);
             card.setCardElevation(3);
             card.setRadius(4);
-            card.setPadding(0,10,0,15);
+            card.setPadding(5,10,5,10);
             card.setCardBackgroundColor(0000);
             card.addView(linearLayout);
             holder.conjuntoPlacas.addView(card);
