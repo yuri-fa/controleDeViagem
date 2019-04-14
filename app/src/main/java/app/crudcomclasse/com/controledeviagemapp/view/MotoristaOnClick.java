@@ -29,19 +29,41 @@ public class MotoristaOnClick implements View.OnClickListener {
                 .setPositiveButton("Salvar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        String mensagem = null;
+                        boolean valido = true;
                         Motorista motorista = new Motorista();
                         motorista.setMotNomeCompleto(nomeMotorista.getText().toString());
                         motorista.setMotNomeGuerra(nomeGuerra.getText().toString());
 
-                        boolean isInsert = new MotoristaController(context).inserirMotorista(motorista);
-
-                        if (isInsert){
-                            Toast.makeText(context,"Motorista salvo com sucesso",Toast.LENGTH_LONG).show();
-                            ((MotoristaActivity) context).pesquisarTodos();
-                        }else{
-                            Toast.makeText(context,"Falha, tente novamente",Toast.LENGTH_LONG).show();
+                        if (motorista.getMotNomeCompleto() == null || motorista.getMotNomeCompleto().equals("")){
+                            mensagem = "Informe o nome completo do motorista";
+                            valido = false;
                         }
-                        dialog.cancel();
+
+                        if (motorista.getMotNomeGuerra() == null || motorista.getMotNomeGuerra().equals("")){
+                            mensagem = "Informe um nome de guerra do motorista";
+                            valido = false;
+                        }
+
+                        if (valido) {
+                            boolean isInsert = new MotoristaController(context).inserirMotorista(motorista);
+
+                            if (isInsert) {
+                                Toast.makeText(context, "Motorista salvo com sucesso", Toast.LENGTH_SHORT).show();
+                                ((MotoristaActivity) context).pesquisarTodos();
+                            } else {
+                                Toast.makeText(context, "Falha, tente novamente", Toast.LENGTH_SHORT).show();
+                            }
+                            dialog.dismiss();
+                        }else{
+                            Toast.makeText(context, mensagem, Toast.LENGTH_LONG).show();
+                        }
+                    }
+                })
+                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
                     }
                 }).show();
     }

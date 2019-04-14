@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.math.BigDecimal;
 
@@ -28,12 +29,27 @@ public class ViagemOnClickPlacas implements View.OnClickListener {
                 .setPositiveButton("Adicionar Placa", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                    boolean valido = true;
+                    String mensagem = null;
+                    if (txtSerial.getText().toString() == null || txtSerial.getText().toString().equals("")){
+                        mensagem = "Informe o serial";
+                        valido = false;
+                    }
+                    if (txtPeso.getText().toString() == null|| txtPeso.getText().toString().equals("")){
+                        mensagem = "Informe o peso";
+                        valido = false;
+                    }
+
+                    if (valido){
                         Placa placa = new Placa();
                         placa.setSerial(txtSerial.getText().toString());
                         BigDecimal peso = new BigDecimal(txtPeso.getText().toString());
                         placa.setPeso(peso);
                         ((ViagemActivity)context).receberPlaca(placa,true);
                         dialog.dismiss();
+                    }else{
+                        Toast.makeText(context,mensagem, Toast.LENGTH_LONG).show();
+                    }
                     }
                 }).show();
     }

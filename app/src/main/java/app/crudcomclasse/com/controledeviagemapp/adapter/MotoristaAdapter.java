@@ -67,8 +67,8 @@ public class MotoristaAdapter extends RecyclerView.Adapter<MotoristaAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         final Motorista motorista = motoristaList.get(position);
-        holder.nomeCompleto.setText(motorista.getMotNomeCompleto());
-        holder.nomeGuerra.setText(motorista.getMotNomeGuerra());
+        holder.nomeCompleto.setText("Nome Completo : "+motorista.getMotNomeCompleto());
+        holder.nomeGuerra.setText(" Nome de Guerra : "+motorista.getMotNomeGuerra());
 
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -70,7 +70,7 @@ public class RelatorioViagensAdapter extends RecyclerView.Adapter<RelatorioViage
     public void onBindViewHolder(@NonNull RelatorioViagensAdapter.ViewHolder holder, int position) {
         final Viagem viagem = viagemList.get(position);
         holder.codigo.setText("Codigo : "+ viagem.getNumSequencial());
-        holder.data.setText("Data : "+ControleViagemUtil.formatarDataParaString(viagem.getDthrViagem()));
+        holder.data.setText("Data : "+ ControleViagemUtil.formatarDataParaString(viagem.getDthrViagem()));
         holder.veiculo.setText("Veiculo : " + viagem.getVeiculo().getPlaca());
         holder.motorista.setText("Motorista : " + viagem.getMotorista().getMotNomeCompleto());
 
@@ -113,14 +113,22 @@ public class RelatorioViagensAdapter extends RecyclerView.Adapter<RelatorioViage
                 builder.setPositiveButton("Deletar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+
                         boolean excluido = new ViagemController(context).excluirViagem(viagem.getNumSequencial());
                         if (excluido){
                             Toast.makeText(context,"Viagem excluida com sucesso",Toast.LENGTH_SHORT).show();
+                            ((RelatoriosActivity)context).pesquisarViagens();
                         }else{
                             Toast.makeText(context,"Falha tente novamente",Toast.LENGTH_SHORT).show();
                         }
+                    }});
+                builder.setNeutralButton("Cancelar",new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
                     }
                 });
+                builder.create().show();
             }
         });
 

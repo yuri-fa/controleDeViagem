@@ -96,7 +96,7 @@ public class PlacaAdapter extends RecyclerView.Adapter<PlacaAdapter.ViewHolder> 
                                             System.out.println(serial.getText().toString());
                                             String teste = serial.getText().toString();
                                             valido = false;
-                                            Toast.makeText(context, "Informe o Serial"+serial.getText().toString(), Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(context, "Informe o Serial", Toast.LENGTH_SHORT).show();
                                         }
                                         if (peso.getText().toString() == null || peso.getText().toString().equals("")){
                                             valido = false;
@@ -114,9 +114,9 @@ public class PlacaAdapter extends RecyclerView.Adapter<PlacaAdapter.ViewHolder> 
                 builder.setPositiveButton("Excluir", new DialogInterface.OnClickListener(){
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        if (placa.getPlaNumSequencial() != null){
-                            boolean excluido = new ViagemController(context).excluirPlaca(placa.getPlaNumSequencial());
-                        }
+//                        if (placa.getPlaNumSequencial() != null){
+//                            boolean excluido = new ViagemController(context).excluirPlaca(placa.getPlaNumSequencial());
+//                        }
                         ((ViagemActivity)context).removerPlaca(position);
                     }
                 } );

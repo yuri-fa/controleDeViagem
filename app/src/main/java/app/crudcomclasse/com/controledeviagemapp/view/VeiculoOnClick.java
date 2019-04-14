@@ -39,7 +39,7 @@ public class VeiculoOnClick implements View.OnClickListener {
                 dialog.dismiss();
             }
         });
-        builder.setNeutralButton("Voltar", new DialogInterface.OnClickListener() {
+        builder.setNeutralButton("Cancelar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();

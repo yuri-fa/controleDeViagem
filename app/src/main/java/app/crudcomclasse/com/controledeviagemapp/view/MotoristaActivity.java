@@ -36,13 +36,11 @@ public class MotoristaActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
-//        salvando os status da instancia
         super.onCreate(savedInstanceState);
         setContentView(R.layout.motorista);
         recyclerView = (RecyclerView) findViewById(R.id.reciclerViewMotorista);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-
         ImageButton imageButton = (ImageButton) findViewById(R.id.novoMotorista);
         imageButton.setOnClickListener(new MotoristaOnClick());
         pesquisarTodos();

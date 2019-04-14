@@ -45,6 +45,35 @@ public class ViagemController extends DataBaseAdapter {
         return valido;
     }
 
+    public boolean editarViagem(Viagem viagem,List<Placa> placasRemovidas) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        boolean valido = true;
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("viveiculo",viagem.getVeiculo().getVeiNumSequencial());
+        contentValues.put("vimotorista",viagem.getMotorista().getMotNumSequencial());
+        String [] wheresValues = {viagem.getNumSequencial().toString()};
+        String where = "vinumsequencial = ?";
+        boolean isUpdate = db.update("viagem",contentValues,where,wheresValues) > 0;
+
+        if (isUpdate) {
+            for (Placa placaRemovida : placasRemovidas) {
+                valido = excluirPlaca(placaRemovida.getPlaNumSequencial());
+                if (!valido) {
+                    return valido;
+                }
+            }
+            for (Placa placaAtualizada : viagem.getConjuntoDePlacas()) {
+                if (placaAtualizada.getPlaNumSequencial() != null) {
+                    valido = atualizarTabela(placaAtualizada);
+                    if (!valido) {
+                        return valido;
+                    }
+                }
+            }
+        }
+        return valido;
+    }
+
     public boolean inserirPlaca(List<Placa> placas,Long idViagem) {
         SQLiteDatabase db = this.getWritableDatabase();
         boolean valido = true;
@@ -151,7 +180,13 @@ public class ViagemController extends DataBaseAdapter {
     }
 
     public boolean excluirViagem(Integer numSequencial) {
-        return true;
+        SQLiteDatabase db = this.getWritableDatabase();
+        boolean isDelete = db.delete("viagem","vinumsequencial = "+ numSequencial,null) > 0;
+        if (isDelete){
+            boolean isDeletePlaca = db.delete("placa","plaviagem = "+ numSequencial,null) > 0;
+            return isDeletePlaca;
+        }
+        return isDelete;
     }
 
     public ArrayList<Motorista> buscarMotoristas(){
@@ -191,6 +226,18 @@ public class ViagemController extends DataBaseAdapter {
     public boolean excluirPlaca(Integer plaNumSequencial) {
         SQLiteDatabase db = this.getReadableDatabase();
         boolean excluido = db.delete("placa","planumsequencial = "+ plaNumSequencial,null) > 0;
+        db.close();
         return excluido;
+    }
+
+    public boolean atualizarTabela(Placa placaAtualizada){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("plaserial",placaAtualizada.getSerial());
+        contentValues.put("plapeso",placaAtualizada.getPeso().toString());
+        String where = "planumsequencial = ?";
+        String whereArgs[] = {placaAtualizada.getPlaNumSequencial().toString()};
+        boolean isUpdate = db.update("placa",contentValues,where,whereArgs) > 0;
+        return isUpdate;
     }
 }

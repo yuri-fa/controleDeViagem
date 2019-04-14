@@ -30,7 +30,7 @@ public class VeiculoController extends DataBaseAdapter {
     public List<Veiculo> pesquisarTodos() {
         List<Veiculo> veiculoList = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
-        String query = "select veinumSequencial,veiplaca,motnumsequencial,motnomeguerra from veiculo LEFT OUTER JOIN motorista on veimotorista = motnumsequencial";
+        String query = "select * from veiculo";
 
         Cursor cursor = db.rawQuery(query,null);
 
@@ -39,7 +39,6 @@ public class VeiculoController extends DataBaseAdapter {
                 Veiculo veiculo = new Veiculo();
                 int id = Integer.parseInt(cursor.getString(cursor.getColumnIndex("veinumsequencial")));
                 String placa = cursor.getString(cursor.getColumnIndex("veiplaca"));
-                String nomeMotorista = cursor.getString(cursor.getColumnIndex("motnomeguerra"));
                 veiculo.setVeiNumSequencial(id);
                 veiculo.setPlaca(placa);
                 veiculoList.add(veiculo);

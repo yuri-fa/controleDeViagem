@@ -34,6 +34,7 @@ public class ViagemActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private PlacaAdapter placaAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    private List<Placa> placaRemovidasList = new ArrayList<>();
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,7 +115,10 @@ public class ViagemActivity extends AppCompatActivity {
     }
 
     public void removerPlaca(int position) {
-        viagem.getConjuntoDePlacas().remove(position);
+        Placa placaRemovida = viagem.getConjuntoDePlacas().remove(position);
+        if (placaRemovida.getPlaNumSequencial() != null){
+            placaRemovidasList.add(placaRemovida);
+        }
         atualizarLista();
     }
 
@@ -135,16 +139,33 @@ public class ViagemActivity extends AppCompatActivity {
             Toast.makeText(view.getContext(),"Informe um produto",Toast.LENGTH_LONG).show();
         }
         if (valido){
-            viagem.setDthrViagem(new Date());
-            boolean isInsert = new ViagemController(view.getContext()).inserirViagem(viagem);
-            if (isInsert){
-                Toast.makeText(view.getContext(),"Viagem cadastrada com sucesso",Toast.LENGTH_LONG).show();
-                placaAdapter = null;
-                layoutManager = new LinearLayoutManager(this);
-                recyclerView.setLayoutManager(layoutManager);
-                viagem = new Viagem();
-            }else{
-                Toast.makeText(view.getContext(),"Falha tente novamente",Toast.LENGTH_LONG).show();
+            if (viagem.getNumSequencial() != null){
+                boolean isUpDate = new ViagemController(view.getContext()).editarViagem(viagem,placaRemovidasList);
+                if (isUpDate){
+                    Toast.makeText(view.getContext(), "Viagem editada com sucesso", Toast.LENGTH_LONG).show();
+                    placaAdapter = null;
+                    layoutManager = new LinearLayoutManager(this);
+                    recyclerView.setLayoutManager(layoutManager);
+                    viagem = new Viagem();
+                    viagem.setConjuntoDePlacas(new ArrayList<Placa>());
+                    atualizarLista();
+                }else{
+                    Toast.makeText(view.getContext(), "Falha tente novamente", Toast.LENGTH_LONG).show();
+                }
+            }else {
+                viagem.setDthrViagem(new Date());
+                boolean isInsert = new ViagemController(view.getContext()).inserirViagem(viagem);
+                if (isInsert) {
+                    Toast.makeText(view.getContext(), "Viagem cadastrada com sucesso", Toast.LENGTH_LONG).show();
+                    placaAdapter = null;
+                    layoutManager = new LinearLayoutManager(this);
+                    recyclerView.setLayoutManager(layoutManager);
+                    viagem = new Viagem();
+                    viagem.setConjuntoDePlacas(new ArrayList<Placa>());
+                    atualizarLista();
+                } else {
+                    Toast.makeText(view.getContext(), "Falha tente novamente", Toast.LENGTH_LONG).show();
+                }
             }
         }
     }
