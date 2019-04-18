@@ -22,6 +22,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import app.crudcomclasse.com.controledeviagemapp.util.ControleViagemUtil;
 import app.crudcomclasse.com.controledeviagemapp.util.DataBaseAdapter;
 import app.crudcomclasse.com.controledeviagemapp.model.Motorista;
 import app.crudcomclasse.com.controledeviagemapp.model.Placa;
@@ -105,7 +106,7 @@ public class RelatorioController extends DataBaseAdapter {
             if (!diretorio.mkdir()){
                 diretorio.mkdirs();
             }
-            String dataAtual = String.valueOf(new Date().getTime());
+            String dataAtual = ControleViagemUtil.formatarDataParaString(new Date());
             File teste = new File(diretorio, dataAtual+".csv");
             teste.setExecutable(true);
             teste.setReadable(true);
@@ -114,50 +115,49 @@ public class RelatorioController extends DataBaseAdapter {
             myFile = new FileWriter(teste);
             myOutWriter = new PrintWriter(myFile);
             cabecalho = "MOTORISTA,VEICULO";
-
-            String query = "select distinct motnomecompleto,veiplaca,sum(placas.plapeso) as peso_total from viagem" +
-                    " left outer join motorista as mot on vimotorista = mot.motnumsequencial" +
-                    " left outer join veiculo as vei on viveiculo = veinumsequencial" +
-                    " left outer join placa as placas on vinumsequencial = placas.plaviagem" +
-                    " group by motnomecompleto";
+            long dataViagemInicio = dataInicio.getTime();
+            long dataViagemFim = dataFinal.getTime();
+            String query = "select distinct motnumsequencial,motnomecompleto,veinumsequencial,veiplaca," +
+            " sum(plapeso) as peso_total from viagem" +
+            " left outer join motorista on vimotorista = motnumsequencial"+
+            " left outer join veiculo on viveiculo = veinumsequencial" +
+            " left outer join placa on vinumsequencial = plaviagem"+
+            " where vidthrinicio >= "+dataViagemInicio+
+            " and vidthrinicio <= "+ dataViagemFim +
+            " group by vimotorista,viveiculo";
 
             Cursor cursor = sampleDB.rawQuery(query,null);
-            if (cursor != null) {
-                if (cursor.moveToFirst()) {
-                    do {
-                        String motorista = cursor.getString(cursor.getColumnIndex("motnomecompleto"));
-                        String veiculo = cursor.getString(cursor.getColumnIndex("veiplaca"));
-                        String pesoTotal = cursor.getString(cursor.getColumnIndex("peso_total"));
-                        Relatorio relatorio = new Relatorio(motorista, veiculo, pesoTotal);
-                        relatorio.setPlacas(new ArrayList<String>());
+            if (cursor.moveToFirst()) {
+                do {
+                    String motorista = cursor.getString(cursor.getColumnIndex("motnomecompleto"));
+                    String motoristaId = cursor.getString(cursor.getColumnIndex("motnumsequencial"));
+                    String veiculo = cursor.getString(cursor.getColumnIndex("veiplaca"));
+                    String veiculoId = cursor.getString(cursor.getColumnIndex("veinumsequencial"));
+                    String pesoTotal = cursor.getString(cursor.getColumnIndex("peso_total"));
+                    Relatorio relatorio = new Relatorio(motorista, veiculo, pesoTotal);
+                    relatorio.setPlacas(new ArrayList<String>());
+                    String queryPlaca = "select sum(plapeso) as peso_viagem from motorista"+
+                    " left outer join viagem on motnumsequencial = vimotorista"+
+                    " left outer join veiculo on viveiculo = veinumsequencial"+
+                    " left outer join placa on vinumsequencial = plaviagem"+
+                    " where motnumsequencial = "+ motoristaId +
+                    " and veinumsequencial = "+ veiculoId +
+                    " and vidthrinicio >= "+ dataViagemInicio+
+                    " and vidthrinicio <= "+ dataViagemFim +
+                    " group by vinumsequencial,viveiculo";
 
-                        String queryPlaca = "select mot.motnomecompleto,sum(placas.plapeso) as pesoViagem" +
-                                " from motorista as mot" +
-                                " left outer join viagem as vi" +
-                                " on mot.motnumsequencial = vi.vimotorista" +
-                                " left outer join veiculo as vei" +
-                                " on vi.viveiculo = vei.veinumsequencial" +
-                                " left outer join placa as placas" +
-                                " on vinumsequencial = placas.plaviagem" +
-                                " where mot.motnomecompleto = '"+ motorista + "'"+
-                                " and vi.vidthrinicio >= "+ dataInicio.getTime() +
-                                " and vi.vidthrinicio <= "+dataFinal.getTime()+
-                                " group by vi.vinumsequencial,vei.veiplaca";
-                        Cursor cursorPlaca = sampleDB.rawQuery(queryPlaca, null);
-                        if (cursorPlaca != null) {
-                            if (cursorPlaca.moveToFirst()) {
-                                do {
-                                    relatorio.getPlacas().add(cursorPlaca.getString(cursorPlaca.getColumnIndex("pesoViagem")));
-                                } while (cursorPlaca.moveToNext());
-                            }
-                        }
-                        listMap.put(relatorio.getMotorista(), relatorio);
-                        if(maiorQuantidadeDeViagens < relatorio.getPlacas().size()){
-                            maiorQuantidadeDeViagens = relatorio.getPlacas().size();
-                        }
-                    }while (cursor.moveToNext());
-                    cursor.close();
-                }
+                    Cursor cursorPlaca = sampleDB.rawQuery(queryPlaca, null);
+                    if (cursorPlaca.moveToFirst()) {
+                        do {
+                            relatorio.getPlacas().add(cursorPlaca.getString(cursorPlaca.getColumnIndex("peso_viagem")));
+                        } while (cursorPlaca.moveToNext());
+                    }
+                    listMap.put(relatorio.getMotorista(), relatorio);
+                    if(maiorQuantidadeDeViagens < relatorio.getPlacas().size()){
+                        maiorQuantidadeDeViagens = relatorio.getPlacas().size();
+                    }
+                }while (cursor.moveToNext());
+                cursor.close();
             }
         } catch (IOException se) {
             se.printStackTrace();

@@ -93,7 +93,6 @@ public class RelatorioViagensAdapter extends RecyclerView.Adapter<RelatorioViage
             linearLayout.addView(textPeso);
 
             CardView card = new CardView(context);
-//            card.setContentPadding(5,5,5,5);
             card.setCardElevation(3);
             card.setRadius(4);
             card.setPadding(5,10,5,10);

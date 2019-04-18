@@ -40,23 +40,4 @@ public class ExportacaoRelatorio extends AppCompatActivity {
             Toast.makeText(this,"Falha na exportaçao",Toast.LENGTH_LONG).show();
         }
     }
-
-
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        ((MyRecyclerViewAdapter) adapter).setOnItemClickListener(new MyRecyclerViewAdapter
-//                .MyClickListener() {
-//            @Override
-//            public void onItemClick(int position, View v) {
-//                Log.i(LOG_TAG, " Clicked on Item " + position);
-//            }
-//        });
-//    }
-//
-//    private List<Viagem> getDataSet() {
-//        List<Viagem> viagens = new ViagemController(this).pesquisarViagens();
-//        return viagens;
-//    }
-
 }

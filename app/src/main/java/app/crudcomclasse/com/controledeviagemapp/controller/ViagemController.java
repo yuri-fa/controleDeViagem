@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
@@ -66,6 +67,11 @@ public class ViagemController extends DataBaseAdapter {
                 if (placaAtualizada.getPlaNumSequencial() != null) {
                     valido = atualizarTabela(placaAtualizada);
                     if (!valido) {
+                        return valido;
+                    }
+                }else{
+                    valido = inserirPlaca(Arrays.asList(placaAtualizada),Long.parseLong(viagem.getNumSequencial().toString()));
+                    if (!valido){
                         return valido;
                     }
                 }
@@ -206,6 +212,23 @@ public class ViagemController extends DataBaseAdapter {
         }
         return motoristaList;
     }
+
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        ((MyRecyclerViewAdapter) adapter).setOnItemClickListener(new MyRecyclerViewAdapter
+//                .MyClickListener() {
+//            @Override
+//            public void onItemClick(int position, View v) {
+//                Log.i(LOG_TAG, " Clicked on Item " + position);
+//            }
+//        });
+//    }
+//
+//    private List<Viagem> getDataSet() {
+//        List<Viagem> viagens = new ViagemController(this).pesquisarViagens();
+//        return viagens;
+//    }
 
     public ArrayList<Veiculo> buscarVeiculos(){
         SQLiteDatabase db = this.getReadableDatabase();
