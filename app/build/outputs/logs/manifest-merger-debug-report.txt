@@ -1,12 +1,14 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:2:1-27:12
-INJECTED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:2:1-27:12
-INJECTED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:2:1-27:12
-INJECTED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:2:1-27:12
+ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:2:1-28:12
+INJECTED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:2:1-28:12
+INJECTED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:2:1-28:12
+INJECTED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:2:1-28:12
 MERGED from [com.android.support:design:27.1.1] /home/yuri/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/4a436d2c031afb93a4ad2c20c3543252/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:appcompat-v7:27.1.1] /home/yuri/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/db548d5d73c5486e1492bc3842c75a0a/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:cardview-v7:27.1.1] /home/yuri/.gradle/caches/transforms-1/files-1.1/cardview-v7-27.1.1.aar/7b67a735316dc2629967fc1edb4297f3/AndroidManifest.xml:17:1-22:12
+MERGED from [com.github.barteksc:android-pdf-viewer:2.3.0] /home/yuri/.gradle/caches/transforms-1/files-1.1/android-pdf-viewer-2.3.0.aar/d808c707a2fd4e23c4b7a0c4620e864c/AndroidManifest.xml:2:1-11:12
+MERGED from [com.github.barteksc:pdfium-android:1.5.0] /home/yuri/.gradle/caches/transforms-1/files-1.1/pdfium-android-1.5.0.aar/2241e6593818de1cd499211f44895f7a/AndroidManifest.xml:2:1-11:12
 MERGED from [com.android.support:support-v4:27.1.1] /home/yuri/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/3f47d0c9c110c3bee3792d3f9aad351e/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:gridlayout-v7:27.1.1] /home/yuri/.gradle/caches/transforms-1/files-1.1/gridlayout-v7-27.1.1.aar/1936d2433a7c53581e517480113f317e/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:recyclerview-v7:27.1.1] /home/yuri/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.1.1.aar/5fcdc85cfcf6fc8ddbfb51f7dc4dc9b8/AndroidManifest.xml:17:1-22:12
@@ -15,27 +17,27 @@ MERGED from [com.android.support:animated-vector-drawable:27.1.1] /home/yuri/.gr
 MERGED from [com.android.support:support-core-ui:27.1.1] /home/yuri/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/95ae3dcd87bfaab78cac5eb09d533434/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-core-utils:27.1.1] /home/yuri/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/c090bb90adbabf64321cc6906116b47f/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-vector-drawable:27.1.1] /home/yuri/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/7a405a87e6446a4012eb20a9e21a5c9d/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-media-compat:27.1.1] /home/yuri/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/17062833720c457cf5c85a4c0f15f20b/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:transition:27.1.1] /home/yuri/.gradle/caches/transforms-1/files-1.1/transition-27.1.1.aar/6f18eadafb0f560d3e188988c9f5e927/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:27.1.1] /home/yuri/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/17062833720c457cf5c85a4c0f15f20b/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-compat:27.1.1] /home/yuri/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/ea4151fdbc29e5c4a698d8610916bb92/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /home/yuri/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/cf6ba346a5f26ac35c1e91300bf8f1b7/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /home/yuri/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/55e65b9696b2dcde8628fe59565b4ac9/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:runtime:1.1.0] /home/yuri/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/983653f96d6445695ce73f3a4ed7515a/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.0] /home/yuri/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/688a25da16e13424d583548d64f37e8c/AndroidManifest.xml:17:1-22:12
-INJECTED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:2:1-27:12
-INJECTED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:2:1-27:12
-INJECTED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:2:1-27:12
+INJECTED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:2:1-28:12
+INJECTED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:2:1-28:12
+INJECTED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:2:1-28:12
 	package
 		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:3:5-56
 		INJECTED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml
 		INJECTED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml
-		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:2:1-27:12
+		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:2:1-28:12
 		INJECTED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml
-		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:2:1-27:12
+		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:2:1-28:12
 		INJECTED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:2:11-69
@@ -43,70 +45,74 @@ uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
 ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:5:5-97
 	android:name
 		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:5:22-78
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:6:5-96
+	android:name
+		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:6:22-77
 application
-ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:6:5-25:19
+ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:7:5-26:19
 	android:supportsRtl
-		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:11:9-35
+		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:12:9-35
 	android:label
-		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:9:9-41
+		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:10:9-41
 	android:roundIcon
-		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:10:9-54
+		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:11:9-54
 	android:icon
-		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:8:9-49
+		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:9:9-49
 	android:allowBackup
-		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:7:9-35
+		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:8:9-35
 	android:theme
-		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:12:9-40
+		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:13:9-40
 activity#app.crudcomclasse.com.controledeviagemapp.view.MainActivity
-ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:13:9-19:20
+ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:14:9-20:20
 	android:screenOrientation
-		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:13:88-124
+		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:14:88-124
 	android:hardwareAccelerated
-		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:13:53-87
+		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:14:53-87
 	android:name
-		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:13:19-52
+		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:14:19-52
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:14:13-18:29
+ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:15:13-19:29
 action#android.intent.action.MAIN
-ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:15:17-69
+ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:16:17-69
 	android:name
-		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:15:25-66
+		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:16:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:17:17-77
+ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:18:17-77
 	android:name
-		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:17:27-74
+		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:18:27-74
 activity#app.crudcomclasse.com.controledeviagemapp.view.MotoristaActivity
-ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:20:9-131
+ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:21:9-131
 	android:screenOrientation
-		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:20:93-129
+		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:21:93-129
 	android:hardwareAccelerated
-		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:20:58-92
+		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:21:58-92
 	android:name
-		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:20:19-57
+		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:21:19-57
 activity#app.crudcomclasse.com.controledeviagemapp.view.VeiculoActivity
-ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:21:9-94
+ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:22:9-94
 	android:screenOrientation
-		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:21:56-92
+		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:22:56-92
 	android:name
-		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:21:19-55
+		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:22:19-55
 activity#app.crudcomclasse.com.controledeviagemapp.view.ViagemActivity
-ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:22:9-93
+ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:23:9-93
 	android:screenOrientation
-		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:22:55-91
+		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:23:55-91
 	android:name
-		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:22:19-54
+		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:23:19-54
 activity#app.crudcomclasse.com.controledeviagemapp.view.RelatoriosActivity
-ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:23:9-97
+ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:24:9-97
 	android:screenOrientation
-		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:23:59-95
+		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:24:59-95
 	android:name
-		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:23:19-58
+		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:24:19-58
 activity#app.crudcomclasse.com.controledeviagemapp.view.ExportacaoRelatorio
-ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:24:9-98
+ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:25:9-98
 	android:screenOrientation
-		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:24:60-96
+		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:25:60-96
 	android:name
-		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:24:19-59
+		ADDED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml:25:19-59
 uses-sdk
 INJECTED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/yuri/Documentos/layoutGrid/ControleDeViagemApp/app/src/main/AndroidManifest.xml
@@ -117,6 +123,10 @@ MERGED from [com.android.support:appcompat-v7:27.1.1] /home/yuri/.gradle/caches/
 MERGED from [com.android.support:appcompat-v7:27.1.1] /home/yuri/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/db548d5d73c5486e1492bc3842c75a0a/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:cardview-v7:27.1.1] /home/yuri/.gradle/caches/transforms-1/files-1.1/cardview-v7-27.1.1.aar/7b67a735316dc2629967fc1edb4297f3/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:cardview-v7:27.1.1] /home/yuri/.gradle/caches/transforms-1/files-1.1/cardview-v7-27.1.1.aar/7b67a735316dc2629967fc1edb4297f3/AndroidManifest.xml:20:5-44
+MERGED from [com.github.barteksc:android-pdf-viewer:2.3.0] /home/yuri/.gradle/caches/transforms-1/files-1.1/android-pdf-viewer-2.3.0.aar/d808c707a2fd4e23c4b7a0c4620e864c/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.barteksc:android-pdf-viewer:2.3.0] /home/yuri/.gradle/caches/transforms-1/files-1.1/android-pdf-viewer-2.3.0.aar/d808c707a2fd4e23c4b7a0c4620e864c/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.barteksc:pdfium-android:1.5.0] /home/yuri/.gradle/caches/transforms-1/files-1.1/pdfium-android-1.5.0.aar/2241e6593818de1cd499211f44895f7a/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.barteksc:pdfium-android:1.5.0] /home/yuri/.gradle/caches/transforms-1/files-1.1/pdfium-android-1.5.0.aar/2241e6593818de1cd499211f44895f7a/AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:support-v4:27.1.1] /home/yuri/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/3f47d0c9c110c3bee3792d3f9aad351e/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-v4:27.1.1] /home/yuri/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/3f47d0c9c110c3bee3792d3f9aad351e/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:gridlayout-v7:27.1.1] /home/yuri/.gradle/caches/transforms-1/files-1.1/gridlayout-v7-27.1.1.aar/1936d2433a7c53581e517480113f317e/AndroidManifest.xml:20:5-44
@@ -133,10 +143,10 @@ MERGED from [com.android.support:support-core-utils:27.1.1] /home/yuri/.gradle/c
 MERGED from [com.android.support:support-core-utils:27.1.1] /home/yuri/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/c090bb90adbabf64321cc6906116b47f/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-vector-drawable:27.1.1] /home/yuri/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/7a405a87e6446a4012eb20a9e21a5c9d/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-vector-drawable:27.1.1] /home/yuri/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/7a405a87e6446a4012eb20a9e21a5c9d/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-media-compat:27.1.1] /home/yuri/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/17062833720c457cf5c85a4c0f15f20b/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-media-compat:27.1.1] /home/yuri/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/17062833720c457cf5c85a4c0f15f20b/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:transition:27.1.1] /home/yuri/.gradle/caches/transforms-1/files-1.1/transition-27.1.1.aar/6f18eadafb0f560d3e188988c9f5e927/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:transition:27.1.1] /home/yuri/.gradle/caches/transforms-1/files-1.1/transition-27.1.1.aar/6f18eadafb0f560d3e188988c9f5e927/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] /home/yuri/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/17062833720c457cf5c85a4c0f15f20b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] /home/yuri/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/17062833720c457cf5c85a4c0f15f20b/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-compat:27.1.1] /home/yuri/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/ea4151fdbc29e5c4a698d8610916bb92/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-compat:27.1.1] /home/yuri/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/ea4151fdbc29e5c4a698d8610916bb92/AndroidManifest.xml:20:5-44
 MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /home/yuri/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/cf6ba346a5f26ac35c1e91300bf8f1b7/AndroidManifest.xml:20:5-44

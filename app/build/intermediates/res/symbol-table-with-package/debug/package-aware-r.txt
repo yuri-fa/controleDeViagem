@@ -284,6 +284,10 @@ attr reverseLayout
 attr rippleColor
 attr rowCount
 attr rowOrderPreserved
+attr sb_handlerColor
+attr sb_horizontal
+attr sb_indicatorColor
+attr sb_indicatorTextColor
 attr scrimAnimationDuration
 attr scrimVisibleHeightTrigger
 attr searchHintIcon
@@ -749,6 +753,10 @@ drawable abc_vector_test
 drawable avd_hide_password
 drawable avd_show_password
 drawable caminhao
+drawable default_scroll_handle_bottom
+drawable default_scroll_handle_left
+drawable default_scroll_handle_right
+drawable default_scroll_handle_top
 drawable design_bottom_navigation_item_background
 drawable design_fab_background
 drawable design_ic_visibility
@@ -757,9 +765,11 @@ drawable design_password_eye
 drawable design_snackbar_background
 drawable ic_add_circle_outline
 drawable ic_border_color
+drawable ic_btn_voltar
 drawable ic_delete_forever
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable ic_share_black_24dp
 drawable lista
 drawable motorista
 drawable navigation_empty_icon
@@ -817,8 +827,11 @@ id beginning
 id blocking
 id bottom
 id btn_finalizarViagem
+id btnexportar
+id btnvoltar
 id buttonPanel
 id calendario
+id calendario_viagens
 id cancel_action
 id card_view
 id card_view_placas
@@ -904,6 +917,7 @@ id novoVeiculo
 id parallax
 id parentPanel
 id parent_matrix
+id pdf
 id pin
 id placa_peso
 id placa_serial
@@ -1091,6 +1105,9 @@ layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 layout veiculo
 layout viagem
+mipmap ic_launcher
+mipmap ic_launcher_foreground
+mipmap ic_launcher_round
 mipmap ic_local_shipping
 string abc_action_bar_home_description
 string abc_action_bar_up_description
@@ -1559,6 +1576,7 @@ styleable PopupWindowBackgroundState state_above_anchor
 styleable RecycleListView paddingBottomNoButtons paddingTopNoTitle
 styleable RecyclerView android_orientation android_descendantFocusability fastScrollEnabled fastScrollHorizontalThumbDrawable fastScrollHorizontalTrackDrawable fastScrollVerticalThumbDrawable fastScrollVerticalTrackDrawable layoutManager reverseLayout spanCount stackFromEnd
 styleable ScrimInsetsFrameLayout insetForeground
+styleable ScrollBar sb_handlerColor sb_horizontal sb_indicatorColor sb_indicatorTextColor
 styleable ScrollingViewBehavior_Layout behavior_overlapTop
 styleable SearchView android_focusable android_maxWidth android_inputType android_imeOptions closeIcon commitIcon defaultQueryHint goIcon iconifiedByDefault layout queryBackground queryHint searchHintIcon searchIcon submitBackground suggestionRowLayout voiceIcon
 styleable SnackbarLayout android_maxWidth elevation maxActionInlineWidth
