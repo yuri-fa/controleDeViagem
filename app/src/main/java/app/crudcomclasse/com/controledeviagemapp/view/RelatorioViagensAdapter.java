@@ -111,7 +111,7 @@ public class RelatorioViagensAdapter extends RecyclerView.Adapter<RelatorioViage
         });
         holder.excluirViagem.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setTitle("Deseja excluir a viagem?");
                 builder.setPositiveButton("Deletar", new DialogInterface.OnClickListener() {
@@ -121,7 +121,7 @@ public class RelatorioViagensAdapter extends RecyclerView.Adapter<RelatorioViage
                         boolean excluido = new ViagemController(context).excluirViagem(viagem.getNumSequencial());
                         if (excluido){
                             Toast.makeText(context,"Viagem excluida com sucesso",Toast.LENGTH_SHORT).show();
-                            ((RelatoriosActivity)context).pesquisarViagens();
+                            ((RelatoriosActivity)context).pesquisarViagens(v);
                         }else{
                             Toast.makeText(context,"Falha tente novamente",Toast.LENGTH_SHORT).show();
                         }

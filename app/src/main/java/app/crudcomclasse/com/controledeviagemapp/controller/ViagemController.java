@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import app.crudcomclasse.com.controledeviagemapp.util.ControleViagemUtil;
@@ -106,12 +107,14 @@ public class ViagemController extends DataBaseAdapter {
         return valido;
     }
 
-    public ArrayList<Viagem> pesquisarViagens(){
+    public ArrayList<Viagem> pesquisarViagens(Date dataIncio, Date dataFinal){
         ArrayList<Viagem> viagemList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM viagem " +
-                        "LEFT OUTER JOIN motorista on vimotorista = motnumsequencial " +
-                        "LEFT OUTER JOIN veiculo on viveiculo = veinumsequencial ";
+                        " LEFT OUTER JOIN motorista on vimotorista = motnumsequencial " +
+                        " LEFT OUTER JOIN veiculo on viveiculo = veinumsequencial " +
+                        " WHERE vidthrinicio >= "+ dataIncio.getTime() +
+                        " AND vidthrinicio <= " + dataFinal.getTime();
         Cursor cursor = db.rawQuery(query,null);
 
         if (cursor.moveToFirst()){
@@ -212,23 +215,6 @@ public class ViagemController extends DataBaseAdapter {
         }
         return motoristaList;
     }
-
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        ((MyRecyclerViewAdapter) adapter).setOnItemClickListener(new MyRecyclerViewAdapter
-//                .MyClickListener() {
-//            @Override
-//            public void onItemClick(int position, View v) {
-//                Log.i(LOG_TAG, " Clicked on Item " + position);
-//            }
-//        });
-//    }
-//
-//    private List<Viagem> getDataSet() {
-//        List<Viagem> viagens = new ViagemController(this).pesquisarViagens();
-//        return viagens;
-//    }
 
     public ArrayList<Veiculo> buscarVeiculos(){
         SQLiteDatabase db = this.getReadableDatabase();

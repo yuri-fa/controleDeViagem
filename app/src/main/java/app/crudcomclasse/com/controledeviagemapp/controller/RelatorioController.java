@@ -22,6 +22,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import app.crudcomclasse.com.controledeviagemapp.model.PdfExport;
 import app.crudcomclasse.com.controledeviagemapp.util.ControleViagemUtil;
 import app.crudcomclasse.com.controledeviagemapp.util.DataBaseAdapter;
 import app.crudcomclasse.com.controledeviagemapp.model.Motorista;
@@ -29,6 +30,7 @@ import app.crudcomclasse.com.controledeviagemapp.model.Placa;
 import app.crudcomclasse.com.controledeviagemapp.model.Relatorio;
 import app.crudcomclasse.com.controledeviagemapp.model.Veiculo;
 import app.crudcomclasse.com.controledeviagemapp.model.Viagem;
+import app.crudcomclasse.com.controledeviagemapp.view.ExportacaoRelatorio;
 
 public class RelatorioController extends DataBaseAdapter {
     private Context context;
@@ -85,104 +87,49 @@ public class RelatorioController extends DataBaseAdapter {
         return viagemList;
     }
 
-    public boolean exportarRelatorio(Date dataInicio,Date dataFinal){
-        Map<String,Relatorio> listMap = new HashMap<>();
-        FileWriter myFile = null;
-        PrintWriter myOutWriter = null;
-        String cabecalho = "";
-        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
-        String TimeStampDB = sdf.format(new Date());
-        SQLiteDatabase sampleDB = this.getReadableDatabase();
-        int maiorQuantidadeDeViagens = 0;
+    public String exportarRelatorio(Long dataInicio,Long dataFinal){
+        List<Relatorio> relatorioList = new ArrayList<>();
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        String query = "select distinct motnumsequencial,motnomecompleto,veinumsequencial,veiplaca," +
+        " sum(plapeso) as peso_total from viagem" +
+        " left outer join motorista on vimotorista = motnumsequencial"+
+        " left outer join veiculo on viveiculo = veinumsequencial" +
+        " left outer join placa on vinumsequencial = plaviagem"+
+        " where vidthrinicio >= "+dataInicio+
+        " and vidthrinicio <= "+ dataFinal +
+        " group by vimotorista,viveiculo";
 
-        int permission = ActivityCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+        if (cursor.moveToFirst()) {
+            do {
+                String motorista = cursor.getString(cursor.getColumnIndex("motnomecompleto"));
+                String motoristaId = cursor.getString(cursor.getColumnIndex("motnumsequencial"));
+                String veiculo = cursor.getString(cursor.getColumnIndex("veiplaca"));
+                String veiculoId = cursor.getString(cursor.getColumnIndex("veinumsequencial"));
+                String pesoTotal = cursor.getString(cursor.getColumnIndex("peso_total"));
+                Relatorio relatorio = new Relatorio(motorista, veiculo, pesoTotal);
+                relatorio.setPlacas(new ArrayList<String>());
 
-        if (permission != PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(context, "Sem permissao para armazenagem", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        File diretorio = new File(Environment.getExternalStorageDirectory()+"/relatorios/");
-        try {
-            if (!diretorio.mkdir()){
-                diretorio.mkdirs();
-            }
-            String dataAtual = ControleViagemUtil.formatarDataParaString(new Date());
-            File teste = new File(diretorio, dataAtual+".csv");
-            teste.setExecutable(true);
-            teste.setReadable(true);
-            teste.setWritable(true);
+                String queryPlaca = "select vinumsequencial,sum(plapeso) as peso_viagem from placa " +
+                    "left outer join viagem on plaviagem = vinumsequencial " +
+                    "where vimotorista =  " + motoristaId +" "+
+                    "and viveiculo = 1 and " + veiculoId +" "+
+                    "and (vidthrinicio >= "+ dataInicio +" and vidthrinicio <= "+ dataFinal +") " +
+                    "group by vinumsequencial";
 
-            myFile = new FileWriter(teste);
-            myOutWriter = new PrintWriter(myFile);
-            cabecalho = "MOTORISTA,VEICULO";
-            long dataViagemInicio = dataInicio.getTime();
-            long dataViagemFim = dataFinal.getTime();
-            String query = "select distinct motnumsequencial,motnomecompleto,veinumsequencial,veiplaca," +
-            " sum(plapeso) as peso_total from viagem" +
-            " left outer join motorista on vimotorista = motnumsequencial"+
-            " left outer join veiculo on viveiculo = veinumsequencial" +
-            " left outer join placa on vinumsequencial = plaviagem"+
-            " where vidthrinicio >= "+dataViagemInicio+
-            " and vidthrinicio <= "+ dataViagemFim +
-            " group by vimotorista,viveiculo";
 
-            Cursor cursor = sampleDB.rawQuery(query,null);
-            if (cursor.moveToFirst()) {
-                do {
-                    String motorista = cursor.getString(cursor.getColumnIndex("motnomecompleto"));
-                    String motoristaId = cursor.getString(cursor.getColumnIndex("motnumsequencial"));
-                    String veiculo = cursor.getString(cursor.getColumnIndex("veiplaca"));
-                    String veiculoId = cursor.getString(cursor.getColumnIndex("veinumsequencial"));
-                    String pesoTotal = cursor.getString(cursor.getColumnIndex("peso_total"));
-                    Relatorio relatorio = new Relatorio(motorista, veiculo, pesoTotal);
-                    relatorio.setPlacas(new ArrayList<String>());
-                    String queryPlaca = "select sum(plapeso) as peso_viagem from motorista"+
-                    " left outer join viagem on motnumsequencial = vimotorista"+
-                    " left outer join veiculo on viveiculo = veinumsequencial"+
-                    " left outer join placa on vinumsequencial = plaviagem"+
-                    " where motnumsequencial = "+ motoristaId +
-                    " and veinumsequencial = "+ veiculoId +
-                    " and vidthrinicio >= "+ dataViagemInicio+
-                    " and vidthrinicio <= "+ dataViagemFim +
-                    " group by vinumsequencial,viveiculo";
-
-                    Cursor cursorPlaca = sampleDB.rawQuery(queryPlaca, null);
-                    if (cursorPlaca.moveToFirst()) {
-                        do {
-                            relatorio.getPlacas().add(cursorPlaca.getString(cursorPlaca.getColumnIndex("peso_viagem")));
-                        } while (cursorPlaca.moveToNext());
-                    }
-                    listMap.put(relatorio.getMotorista(), relatorio);
-                    if(maiorQuantidadeDeViagens < relatorio.getPlacas().size()){
-                        maiorQuantidadeDeViagens = relatorio.getPlacas().size();
-                    }
-                }while (cursor.moveToNext());
-                cursor.close();
-            }
-        } catch (IOException se) {
-            se.printStackTrace();
-            return false;
+                Cursor cursorPlaca = sqLiteDatabase.rawQuery(queryPlaca, null);
+                if (cursorPlaca.moveToFirst()) {
+                    do {
+                        relatorio.getPlacas().add(cursorPlaca.getString(cursorPlaca.getColumnIndex("peso_viagem")));
+                        relatorioList.add(relatorio);
+                    } while (cursorPlaca.moveToNext());
+                }
+            }while (cursor.moveToNext());
+            cursor.close();
         }
-        for (int i=1;i <= maiorQuantidadeDeViagens;i++){
-            cabecalho += ",peso_viagem";
-        }
-        cabecalho += ",peso_total";
-        myOutWriter.append(cabecalho);
-        myOutWriter.append("\n");
-        for (Relatorio relatorio : listMap.values()){
-            myOutWriter.append(relatorio.dadosRelatorio(maiorQuantidadeDeViagens));
-            myOutWriter.append("\n");
-        }
-        try {
-            myOutWriter.close();
-            myFile.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }finally {
-            sampleDB.close();
-        }
-        return true;
+        sqLiteDatabase.close();
+        return new PdfExport().gerarRelatorio(relatorioList,dataInicio,context);
     }
 
     private String dataConvertida(String data){
