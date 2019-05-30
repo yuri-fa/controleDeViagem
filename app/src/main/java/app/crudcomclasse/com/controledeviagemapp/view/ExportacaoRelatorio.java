@@ -94,6 +94,7 @@ public class ExportacaoRelatorio extends AppCompatActivity {
     }
 
     public void acaoVoltar(View view){
-        setContentView(R.layout.activity_main);
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
     }
 }
